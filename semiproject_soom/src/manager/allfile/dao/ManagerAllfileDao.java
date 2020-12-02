@@ -24,7 +24,7 @@ public class ManagerAllfileDao {
 	}
 	
 	public int uploadFile(Connection conn, String f_no, String f_name) throws SQLException, Exception {
-		String sql = "insert into allfile values(fno_seq.nextval,?,?)";
+		String sql = "insert into mallfile values(m_fno_seq.nextval,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, f_no);
 		pstmt.setString(2, f_name);
@@ -37,7 +37,7 @@ public class ManagerAllfileDao {
 	
 	public int getBoardCount(Connection conn) throws SQLException, Exception {
 		int cnt = 0;
-		String sql = "select COUNT(*) from allfile";
+		String sql = "select COUNT(*) from mallfile";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
@@ -49,7 +49,7 @@ public class ManagerAllfileDao {
 
 	public List<ManagerAllfileVO> allList(Connection conn, int start, int end) throws SQLException, Exception {
 		List<ManagerAllfileVO> list = null;
-		String sql = "select * from " + "(select ROWNUM rnum, d.* from " + "(select * from allfile order by num desc) "
+		String sql = "select * from " + "(select ROWNUM rnum, d.* from " + "(select * from mallfile order by num desc) "
 				+ "d) " + "where rnum >= ? and rnum <= ?";
 
 		pstmt = conn.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class ManagerAllfileDao {
 	}
 
 	public ManagerAllfileVO selectOne(Connection conn, int num) throws SQLException, Exception {
-		String sql = "select * from allfile where num = ?";
+		String sql = "select * from mallfile where num = ?";
 		ManagerAllfileVO vo = new ManagerAllfileVO();
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, num);
