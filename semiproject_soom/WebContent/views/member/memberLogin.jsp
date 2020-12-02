@@ -44,7 +44,7 @@ System.out.println(ctxPath1);
 			<a href="mainServlet" id="fix_logo_title">Jelly Music</a>
 		</div>
 		<div id="fix_user">
-			<a href="#">Login</a>
+			<a href="${pageContext.request.contextPath}/memberLoginServlet">Login</a>
 		</div>
 		<div id="fix_side_menu">
 			<div>
@@ -155,12 +155,12 @@ System.out.println(ctxPath1);
 					<div class="box_login">
 						<div class="inp_text">
 							<label for="loginId" class="screen_out" id="idt">아이디</label> <input
-								type="text" id="loginId" name="loginId" placeholder="ID">
+								type="text" id="loginId" name="loginId" placeholder="     ID">
 						</div>
 						<div class="inp_text">
 							<label for="loginPw" class="screen_out" id="pwt">비밀번호</label> <input
 								type="password" id="loginPw" name="loginPw"
-								placeholder="Password">
+								placeholder="     Password">
 						</div>
 					</div>
 					<button type="submit" class="btn_login" id="btnLogin"
@@ -185,8 +185,7 @@ System.out.println(ctxPath1);
 	<script type="text/javascript">
 	function goRegister(){
 		var frm = document.enterForm;
-		frm.action = "<%=ctxPath1%>
-		/test/memberLogin.do";
+		frm.action = "<%=ctxPath1%>/memberLogin.do";
 			frm.method = "post";
 			frm.submit();
 		}
