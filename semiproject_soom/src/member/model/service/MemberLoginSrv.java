@@ -17,7 +17,7 @@ import member.model.vo.MemberLoginVO;
 /**
  * Servlet implementation class MemberRegisterCtrl
  */
-@WebServlet("/test/memberLogin.do")
+@WebServlet("/memberLogin.do")
 public class MemberLoginSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -66,8 +66,8 @@ public class MemberLoginSrv extends HttpServlet {
 					MemberLoginDao dao = new MemberLoginDao();
 					mem = dao.MemberLogin(mem_id, mem_pwd);
 					if (mem != null) { 
-						session.setAttribute("Loginfo", mem);
-						response.sendRedirect("../ttest.jsp");
+						session.setAttribute("ssLogInfo", mem);
+						response.sendRedirect("mainServlet");
 
 					} else {
 						RequestDispatcher disp1 = request.getRequestDispatcher("/memberRegister.jsp");
