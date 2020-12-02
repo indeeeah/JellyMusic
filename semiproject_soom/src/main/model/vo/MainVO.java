@@ -25,6 +25,8 @@ public class MainVO {
 	private String gn_name;
 	private String musicfile;
 	private String albumfile;
+	private String art_no;
+	private String al_no;
 	
 	public String getMem_aka() {
 		return mem_aka;
@@ -144,6 +146,22 @@ public class MainVO {
 
 	public void setAlbumfile(String albumfile) {
 		this.albumfile = albumfile;
+	}
+
+	public String getArt_no() {
+		return art_no;
+	}
+
+	public void setArt_no(String art_no) {
+		this.art_no = art_no;
+	}
+
+	public String getAl_no() {
+		return al_no;
+	}
+
+	public void setAl_no(String al_no) {
+		this.al_no = al_no;
 	}
 	
 	
