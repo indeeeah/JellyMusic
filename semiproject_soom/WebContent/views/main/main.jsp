@@ -42,11 +42,7 @@
                 </div>
                 <div id="fix_user">
                     <img src="${pageContext.request.contextPath}/image/005-user.svg" id="fix_prof">
-                    <c:if test="${not empty himem }">
-                        <c:forEach items="${himem }" var="v" varStatus="s">
-                            <a href="#">Hello, ${v.mem_aka }</a>
-                        </c:forEach>
-                    </c:if>
+                            <a href="#">Hello, ${mem_id }</a>
                 </div>
                 <div id="fix_side_menu">
                     <div>

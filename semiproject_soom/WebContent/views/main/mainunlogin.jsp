@@ -36,7 +36,7 @@
             <nav id="fix_side">
                 <div id="fix_logo">
                     <div id="fix_logo_img"></div>
-                    <a href="mainServlet" id="fix_logo_title">Jelly Music</a>
+                    <a href="unLoginMainServlet" id="fix_logo_title">Jelly Music</a>
                 </div>
                 <div id="fix_user">
                     <a href="${pageContext.request.contextPath}/memberLoginServlet">Login</a>
