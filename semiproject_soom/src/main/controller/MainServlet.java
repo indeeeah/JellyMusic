@@ -52,7 +52,7 @@ public class MainServlet extends HttpServlet {
 		try {
 			MainService mservice = new MainService();
 			////////꼭 넣어야될 코드///////
-			List<MainVO> himem = mservice.helloToMem(mem_id);
+//			List<MainVO> himem = mservice.helloToMem(mem_id);
 			List<MainVO> searlist = mservice.searchWord();
 			List<MainVO> scm = mservice.showCurrmusic(mem_id);
 			//////////////////////////////////
@@ -73,8 +73,8 @@ public class MainServlet extends HttpServlet {
 //			session.setAttribute("mem_id", mem_id);
 			request.setAttribute("mem_id", mem_id);
 			System.out.println(mem_id);
-			if (himem != null) {
-				request.setAttribute("himem", himem);
+//			if (himem != null) {
+//				request.setAttribute("himem", himem);
 				request.setAttribute("searlist", searlist);
 				request.setAttribute("t1p", t1p);
 				request.setAttribute("t6p", t6p);
@@ -95,16 +95,16 @@ public class MainServlet extends HttpServlet {
 
 				request.getRequestDispatcher("/views/main/main.jsp").forward(request, response);
 //				request.getRequestDispatcher("playerCtrl.do").forward(request, response);
-			} else {
-				System.out.println("xxxxxx");
-				request.getRequestDispatcher("/views/main/mainunlog.jsp").forward(request, response);
-
-			}
+//			} else {
+//				System.out.println("xxxxxx");
+//				request.getRequestDispatcher("/views/main/mainunlog.jsp").forward(request, response);
+//
+//			}
 
 		} catch (Exception e) {
 			System.out.println("???????");
 			e.printStackTrace();
-			request.getRequestDispatcher("/views/main/mainunlog.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/main/mainunlogin.jsp").forward(request, response);
 		}
 	}
 

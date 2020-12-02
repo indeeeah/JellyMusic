@@ -908,7 +908,7 @@ background-color: aqua;
 			<a href="unLoginMainServlet" id="fix_logo_title">Jelly Music</a>
 		</div>
 		<div id="fix_user">
-			<a href="#">Login</a>
+			<a href="${pageContext.request.contextPath}/memberLoginServlet">Login</a>
 		</div>
 		<div id="fix_side_menu">
 			<div>

@@ -54,7 +54,7 @@ public class MainListCtrl extends HttpServlet {
 			MainListSrv mlservice = new MainListSrv();
 			MainService mservice = new MainService();
 
-			List<MainVO> himem = mservice.helloToMem(mem_id);
+//			List<MainVO> himem = mservice.helloToMem(mem_id);
 			List<MainVO> searlist = mservice.searchWord();
 			List<MainVO> scm = mservice.showCurrmusic(mem_id);
 			List<MainVO> t1p = mservice.get1to5Top();
@@ -69,8 +69,8 @@ public class MainListCtrl extends HttpServlet {
 			List<MainListVO> moodt = mlservice.getMoodAllt();
 			List<MainListVO> moodd = mlservice.getMoodAlld();
 
-			if (himem != null) {
-				request.setAttribute("himem", himem);
+//			if (himem != null) {
+//				request.setAttribute("himem", himem);
 				request.setAttribute("searlist", searlist);
 				request.setAttribute("t1p", t1p);
 				request.setAttribute("t6p", t6p);
@@ -86,9 +86,9 @@ public class MainListCtrl extends HttpServlet {
 				request.setAttribute("scm", scm);
 
 				request.getRequestDispatcher("/views/music/mainList.jsp").forward(request, response);
-			} else {
-				request.getRequestDispatcher("/views/music/mainList.jsp").forward(request, response);
-			}
+//			} else {
+//				request.getRequestDispatcher("/views/music/mainList.jsp").forward(request, response);
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.getRequestDispatcher("/views/music/mainList.jsp").forward(request, response);

@@ -166,7 +166,9 @@
                             <c:if test="${not empty mlm }">
                                 <c:forEach items="${mlm }" var="v" varStatus="s" end="4">
                                     <td>
-                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="for_you_con"> <img <%-- src="/image${v.f_name }.jpg" --%> class="album">
+                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" 
+                                        onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="for_you_con">
+                                         <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="album">
                                             </img>
                                         </a> <input type="hidden" class="fyougo" name="mu_no" value=${v.mu_no }></td>
                                 </c:forEach>
@@ -198,7 +200,7 @@
                             <c:if test="${not empty ml }">
                                 <c:forEach items="${ml }" var="v" varStatus="s" end="5">
                                     <td>
-                                        <a href="#"> <img <%-- src="/image${v.f_name }.jpg" --%> class="arti_art"></img>
+                                        <a href="#"> <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="arti_art"></img>
                                         </a>
                                     </td>
                                 </c:forEach>
@@ -229,7 +231,9 @@
                             <c:if test="${not empty mpl }">
                                 <c:forEach items="${mpl }" var="v" varStatus="s">
                                     <td>
-                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="lpm_con"><img <%-- src="/image${v.f_name }.jpg" --%> class="album" id="ltltb_01">
+                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" 
+                                        onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="lpm_con">
+                                        <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="album" id="ltltb_01">
                                             </img>
                                         </a> <input type="hidden" class="lpmgo" name="mu_no" value=${v.mu_no }></td>
                                 </c:forEach>
@@ -261,16 +265,16 @@
                                 <c:forEach items="${t1p }" var="v" varStatus="s">
                                     <div class="top100_each_l">
                                         <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="tri_con">
-                                            <img <%-- src="/image${v.f_name }.jpg" --%> class="t100_l_album">
+                                            <img  src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="t100_l_album">
                                             </img>
                                             <div class="top100_tri"></div>
                                         </a> <input type="hidden" class="top100go" name="mu_no" value=${v.mu_no }>
                                         <div>
                                             <div class="t100_title">
-                                                <a href="#">${v.mu_name }</a>
+                                                <a href="${pageContext.request.contextPath}/musicMoreServlet?mu_no=${v.mu_no}">${v.mu_name }</a>
                                             </div>
                                             <div class="t100_name">
-                                                <a href="#">${v.art_name }</a>
+                                                <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=1">${v.art_name }</a>
                                             </div>
                                         </div>
                                     </div>
@@ -281,16 +285,18 @@
                             <c:if test="${not empty t6p }">
                                 <c:forEach items="${t6p }" var="v" varStatus="s">
                                     <div class="top100_each_r">
-                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="tri_con"> <img <%-- src="/image${v.f_name }.jpg" --%> class="t100_l_album">
+                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" 
+                                        onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="tri_con"> 
+                                        <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="t100_l_album">
                                             </img>
                                             <div class="top100_tri"></div>
                                         </a><input type="hidden" class="top100go" name="mu_no" value=${v.mu_no }>
                                         <div>
                                             <div class="t100_title">
-                                                <a href="#">${v.mu_name }</a>
+                                                <a href="${pageContext.request.contextPath}/musicMoreServlet?mu_no=${v.mu_no}">${v.mu_name }</a>
                                             </div>
                                             <div class="t100_name">
-                                                <a href="#">${v.art_name }</a>
+                                                <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=1">${v.art_name }</a>
                                             </div>
                                         </div>
                                     </div>
@@ -309,7 +315,9 @@
                             <tr>
                                 <c:forEach items="${nrm }" var="v" varStatus="s">
                                     <td>
-                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="newrl_con"> <img <%-- src="/image${v.f_name }.jpg" --%> class="album"></img>
+                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" 
+                                        onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="newrl_con">
+                                         <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="album"></img>
                                         </a><input type="hidden" class="nrgo" name="mu_no" value=${v.mu_no}>
                                     </td>
                                 </c:forEach>

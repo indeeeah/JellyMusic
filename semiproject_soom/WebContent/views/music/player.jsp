@@ -373,7 +373,7 @@
                                     <c:forEach items="${mplist }" var="v" varStatus="s">
                                         <div class="mulist" id="${v.mu_no }fordelete">
                                             <div class="dplay">X</div>
-                                            <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" class="mulist_con"> <img src="/image/${v.f_name }.jpg" class="mulist_album"></img>
+                                            <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" class="mulist_con"> <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="mulist_album"></img>
                                                 <p class="mulist_title">${v.mu_name }</p>
                                                 <p class="mulist_artist">${v.art_name }</p>
                                             </a> <input type="hidden" class="nowmuno" name="mu_no1" id="muuno" value=${v.mu_no }> <input type="hidden" class="nowmuname" name="mu_name" value=${v.mu_name }> <input type="hidden" class="nowartname" name="art_name"
