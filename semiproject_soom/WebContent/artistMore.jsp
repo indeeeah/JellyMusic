@@ -1352,7 +1352,7 @@ footer {
 					<li><a href="#">구매내역</a></li>
 					<li><a href="#">보관함</a></li>
 					<li><a href="#">계정설정</a></li>
-					<li><a href="#">로그아웃</a></li>
+					<li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
 				<div class="each">
 					<img src="image/001-play.svg" class="sampleimg"> <label
@@ -1380,7 +1380,7 @@ footer {
 					<li><a href="#">공지사항</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="#">자주하는 질문</a></li>
-					<li><a href="#">로그아웃</a></li>
+					<li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
 				<div class="each">
 					<img src="image/001-play.svg" class="sampleimg"> <label

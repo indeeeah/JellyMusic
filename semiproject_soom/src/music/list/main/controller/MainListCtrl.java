@@ -49,7 +49,7 @@ public class MainListCtrl extends HttpServlet {
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//String mem_id = request.getParameter("mem_id");
-		String mem_id = "aaab";
+		String mem_id = (String)request.getSession().getAttribute("ssLogInfo");
 		try {
 			MainListSrv mlservice = new MainListSrv();
 			MainService mservice = new MainService();

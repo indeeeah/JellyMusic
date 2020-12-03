@@ -64,7 +64,7 @@ System.out.println(ctxPath1);
 					<li><a href="#">구매내역</a></li>
 					<li><a href="#">보관함</a></li>
 					<li><a href="#">계정설정</a></li>
-					<li><a href="#">로그아웃</a></li>
+					<li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
 				<div class="fix_each">
 					<img
@@ -99,7 +99,7 @@ System.out.println(ctxPath1);
 					<li><a href="#">공지사항</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="#">자주하는 질문</a></li>
-					<li><a href="#">로그아웃</a></li>
+					<li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
 				<div class="fix_each">
 					<img src="${pageContext.request.contextPath}/image/006-star.svg"
@@ -110,7 +110,7 @@ System.out.println(ctxPath1);
 		</div>
 		<div class="fix_btn">
 			<button class="fix_player_btn"
-				onclick="window.open('<%=request.getContextPath()%>/playerCtrl.do','','width=1200,height=720')">Player</button>
+				onclick="location.href='unLoginMainServlet'">Player</button>
 		</div>
 	</nav>
 	<header class="fix_header">
@@ -155,12 +155,12 @@ System.out.println(ctxPath1);
 					<div class="box_login">
 						<div class="inp_text">
 							<label for="loginId" class="screen_out" id="idt">아이디</label> <input
-								type="text" id="loginId" name="loginId" placeholder="     ID">
+								type="text" id="loginId" name="loginId" placeholder="ID" style="padding-left:30px;">
 						</div>
 						<div class="inp_text">
 							<label for="loginPw" class="screen_out" id="pwt">비밀번호</label> <input
 								type="password" id="loginPw" name="loginPw"
-								placeholder="     Password">
+								placeholder="Password" style="padding-left:30px;">
 						</div>
 					</div>
 					<button type="submit" class="btn_login" id="btnLogin"

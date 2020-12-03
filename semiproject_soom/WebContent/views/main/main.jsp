@@ -42,11 +42,7 @@
                 </div>
                 <div id="fix_user">
                     <img src="${pageContext.request.contextPath}/image/005-user.svg" id="fix_prof">
-                    <c:if test="${not empty himem }">
-                        <c:forEach items="${himem }" var="v" varStatus="s">
-                            <a href="#">Hello, ${v.mem_aka }</a>
-                        </c:forEach>
-                    </c:if>
+                            <a href="#">Hello, ${mem_id }</a>
                 </div>
                 <div id="fix_side_menu">
                     <div>
@@ -59,7 +55,7 @@
                             <li><a href="#">구매내역</a></li>
                             <li><a href="#">보관함</a></li>
                             <li><a href="#">계정설정</a></li>
-                            <li><a href="#">로그아웃</a></li>
+                            <li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
                         </ul>
                         <div class="fix_each">
                             <img src="${pageContext.request.contextPath}/image/003-play-button.svg" class="fix_menu_icon"> <label for="song" class="fix_each_menu" onclick="location.href='mainListCtrl.do';">노래</label>
@@ -83,7 +79,7 @@
                             <li><a href="#">공지사항</a></li>
                             <li><a href="#">Q&A</a></li>
                             <li><a href="#">자주하는 질문</a></li>
-                            <li><a href="#">로그아웃</a></li>
+                            <li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
                         </ul>
                         <div class="fix_each">
                             <img src="${pageContext.request.contextPath}/image/006-star.svg" class="fix_menu_icon"> <label for="membership" class="fix_each_menu">이용권구매</label>

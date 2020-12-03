@@ -3,29 +3,30 @@ package member.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import main.model.service.MainService;
 import main.model.vo.MainVO;
-import member.model.service.FinishRegisterSrv;
-import member.model.vo.FinishRegisterVO;
+import member.model.dao.MemberLoginDao;
 import member.model.vo.MemberLoginVO;
 
 /**
- * Servlet implementation class FinishRegisterServlet
+ * Servlet implementation class MemberLoginServlet
  */
-@WebServlet("/finishRegisterServlet")
-public class FinishRegisterServlet extends HttpServlet {
+@WebServlet("/memberLogoutServlet")
+public class MemberLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public FinishRegisterServlet() {
+	public MemberLogoutServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,30 +48,11 @@ public class FinishRegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		execute(request, response);
 	}
-	
+
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		MemberLoginVO vo = (MemberLoginVO)request.getSession().getAttribute("ssLogInfo");
-		String mem_id = vo.getMem_id();
-		try {
-			MainService mservice = new MainService();
-
-			List<MainVO> himem = mservice.helloToMem(mem_id);
-			List<MainVO> searlist = mservice.searchWord();
-			
-			request.setAttribute("mem_id", mem_id);
-			if(himem!=null) {
-				request.setAttribute("himem", himem);
-				request.setAttribute("searlist", searlist);
-				
-				request.getRequestDispatcher("views/member/finishregister.jsp").forward(request, response);
-			} else {
-				request.getRequestDispatcher("views/member/finishregister.jsp").forward(request, response);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			request.getRequestDispatcher("views/member/finishregister.jsp").forward(request, response);
-		}
+		request.getSession().removeAttribute("ssLogInfo");
+		response.sendRedirect("index.jsp");
 	}
 
 }

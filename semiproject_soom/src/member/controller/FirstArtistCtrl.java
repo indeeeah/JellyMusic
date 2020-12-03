@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.model.service.FirstArtistSrv;
 import member.model.vo.FirstArtistVO;
+import member.model.vo.MemberLoginVO;
 
 /**
  * Servlet implementation class FirstArtistCtrl
@@ -52,7 +53,8 @@ public class FirstArtistCtrl extends HttpServlet {
 			List<FirstArtistVO> fat = faservice.setArtistt();
 			List<FirstArtistVO> fam = faservice.setArtistm();
 			List<FirstArtistVO> fab = faservice.setArtistb();
-			String mem_id = "aaab";
+			MemberLoginVO vo = (MemberLoginVO)request.getSession().getAttribute("ssLogInfo");
+			String mem_id = vo.getMem_id();
 			System.out.println("11111111");
 			request.setAttribute("mem_id", mem_id);
 			System.out.println(mem_id);

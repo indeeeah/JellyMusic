@@ -72,7 +72,7 @@
 					<li><a href="#">구매내역</a></li>
 					<li><a href="#">보관함</a></li>
 					<li><a href="#">계정설정</a></li>
-					<li><a href="#">로그아웃</a></li>
+					<li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
 				<div class="fix_each">
 					<img

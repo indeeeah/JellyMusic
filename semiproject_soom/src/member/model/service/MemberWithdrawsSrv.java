@@ -52,7 +52,7 @@ public class MemberWithdrawsSrv extends HttpServlet {
  			
  			HttpSession session = request.getSession();
  			
- 			MemberLoginVO vo = (MemberLoginVO)session.getAttribute("Loginfo"); //로그인 정보를 찾아옴
+ 			MemberLoginVO vo = (MemberLoginVO)session.getAttribute("ssLogInfo"); //로그인 정보를 찾아옴
 			System.out.println(vo.getMem_pwd());	//그중 pwd값을 찾아옴
 			System.out.println(pwd);
 			
