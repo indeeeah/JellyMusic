@@ -628,7 +628,7 @@ from {
                     	  timeOut = setTimeout(function(){ 
                     			vid.pause(); 
                     			alert("이용권을 구매해주세요");
-                    			location.href="<%=request.getContextPath() %>/MembershipServlet"
+                    			window.opener.location.href="<%=request.getContextPath() %>/MembershipServlet"
                     		}, 3000);
                     	};
                     </script>
