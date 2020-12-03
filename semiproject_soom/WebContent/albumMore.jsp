@@ -1885,8 +1885,7 @@ hr {
 								<tr>
 									<td colspan="2">
 										<input type="submit" value="글등록">
-										<input type="reset" value="지우기"> 
-										<input type="button" value="글목록" onclick="window.location='albumCommentListCtrl.lo'">
+										<input type="reset" value="${mem_id}"> 
 									</td>
 								</tr>
 							</table>

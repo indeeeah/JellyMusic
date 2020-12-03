@@ -66,7 +66,10 @@ public class MemberLoginSrv extends HttpServlet {
 					MemberLoginDao dao = new MemberLoginDao();
 					mem = dao.MemberLogin(mem_id, mem_pwd);
 					if (mem != null) { 
+						String idLog = mem.getMem_id();
+						System.out.println(idLog);
 						session.setAttribute("ssLogInfo", mem);
+						session.setAttribute("idLog", idLog);
 						response.sendRedirect("mainServlet");
 
 					} else {

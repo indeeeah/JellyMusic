@@ -16,7 +16,7 @@ public class MainDao {
 
 	public List<MainVO> helloToMem(Connection conn, String mem_id) {
 		List<MainVO> mvo = new ArrayList<MainVO>();
-		String sql = "select mem_aka from member where mem_id=?";
+		String sql = "select mem_name from member where mem_id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mem_id);
@@ -24,7 +24,7 @@ public class MainDao {
 			if (rs.next()) {
 				do {
 					MainVO vo = new MainVO();
-					vo.setMem_aka(rs.getString("mem_aka"));
+					vo.setMem_name(rs.getString("mem_name"));
 					mvo.add(vo);
 				} while (rs.next());
 			}

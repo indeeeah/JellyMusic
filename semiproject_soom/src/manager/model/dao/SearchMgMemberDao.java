@@ -43,7 +43,7 @@ public class SearchMgMemberDao {
 				SearchMgMemberVO mvo = new SearchMgMemberVO();
 				mvo.setMem_id(rs.getString("mem_id"));
 				mvo.setMem_pwd(rs.getString("mem_pwd"));
-				mvo.setMem_aka(rs.getString("mem_aka"));
+				mvo.setMem_name(rs.getString("mem_name"));
 				mvo.setMem_addr(rs.getString("mem_addr"));
 				mvo.setMem_email(rs.getString("mem_email"));
 				mvo.setMem_phone(rs.getInt("mem_phone"));
@@ -92,7 +92,7 @@ public class SearchMgMemberDao {
 				SearchMgMemberVO mvo = new SearchMgMemberVO();
 				mvo.setMem_id(rs.getString("mem_id"));
 				mvo.setMem_pwd(rs.getString("mem_pwd"));
-				mvo.setMem_aka(rs.getString("mem_aka"));
+				mvo.setMem_name(rs.getString("mem_name"));
 				mvo.setMem_addr(rs.getString("mem_addr"));
 				mvo.setMem_email(rs.getString("mem_email"));
 				mvo.setMem_phone(rs.getInt("mem_phone"));

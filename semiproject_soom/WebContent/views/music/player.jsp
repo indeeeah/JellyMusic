@@ -346,14 +346,24 @@
                                     <a href="#" class="music" id="musicName">${v.mu_name}</a>
                                 </div>
                                 <div id="player_bar">
-                                    <audio controls="" id="player" autoplay>
-						<source
-							src="${pageContext.request.contextPath}/mp3/K.Will - 그립고 그립고 그립다.mp3"
-							type="audio/mpeg" id="musicaudio">
-						<%--                                             <source src="${pageContext.request.contextPath}/mp3/${v.musicfile}.mp3" type="audio/mpeg" id="musicaudio">
- --%>
-						Your browser dose not Support the audio Tag
-					</audio>
+                                <c:if test="${empty membership }">
+                                    <audio controls="" id="player" autoplay onplaying="myFunction1()">
+										<source
+											src="${pageContext.request.contextPath}/mp3/K.Will - 그립고 그립고 그립다.mp3"
+											type="audio/mpeg" id="musicaudio">
+										<%-- <source src="${pageContext.request.contextPath}/mp3/${v.musicfile}.mp3" type="audio/mpeg" id="musicaudio"> --%>
+										Your browser dose not Support the audio Tag
+									</audio>
+                                </c:if>
+                                <c:if test="${empty not membership }">
+                                    <audio controls="" id="player" autoplay >
+										<source
+											src="${pageContext.request.contextPath}/mp3/K.Will - 그립고 그립고 그립다.mp3"
+											type="audio/mpeg" id="musicaudio">
+										<%-- <source src="${pageContext.request.contextPath}/mp3/${v.musicfile}.mp3" type="audio/mpeg" id="musicaudio"> --%>
+										Your browser dose not Support the audio Tag
+									</audio>
+								</c:if>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -585,6 +595,15 @@
                         $("#vol_con").hover(function() {
                             $("#togo").css("display", "block");
                         });
+                        
+                        var vid = document.getElementById("player");
+                    	vid.onplaying = function() {
+                    	  timeOut = setTimeout(function(){ 
+                    			vid.pause(); 
+                    			alert("이용권을 구매해주세요");
+                    			
+                    		}, 3000);
+                    	};
                     </script>
                 </body>
 

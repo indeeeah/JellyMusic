@@ -77,7 +77,7 @@
                         </div>
                         <ul>
                             <li><a href="#">공지사항</a></li>
-                            <li><a href="#">Q&A</a></li>
+                            <li><a href="${pageContext.request.contextPath}/postListServlet">Q&A</a></li>
                             <li><a href="#">자주하는 질문</a></li>
                             <li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
                         </ul>
@@ -153,7 +153,7 @@
                 <div class="for_you">
                     <c:if test="${not empty himem }">
                         <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct1">${v.mem_aka }님만을위한추천곡</h1>
+                            <h1 id="ct1">${v.mem_id }님만을위한추천곡</h1>
                         </c:forEach>
                     </c:if>
                     <input type="button" class="more" value="더보기">
@@ -188,7 +188,7 @@
                 <div class="maylike">
                     <c:if test="${not empty himem }">
                         <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct2">${v.mem_aka }님이좋아할수도있는아티스트</h1>
+                            <h1 id="ct2">${v.mem_id }님이좋아할수도있는아티스트</h1>
                         </c:forEach>
                     </c:if>
                     <table class="mltb">
@@ -218,7 +218,7 @@
                 <div class="latelyls">
                     <c:if test="${not empty himem }">
                         <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct3">${v.mem_aka }님이최근재생한음악</h1>
+                            <h1 id="ct3">${v.mem_id }님이최근재생한음악</h1>
                         </c:forEach>
                     </c:if>
                     <input type="button" class="more" value="더보기">

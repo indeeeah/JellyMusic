@@ -21,7 +21,6 @@ import java.sql.Date;
 public class SearchMgMemberVO {
 	private String mem_id;
 	private String mem_pwd;
-	private String mem_aka;
 	private String mem_addr;
 	private String mem_email;
 	private int mem_phone;
@@ -43,11 +42,11 @@ public class SearchMgMemberVO {
 	public void setMem_pwd(String mem_pwd) {
 		this.mem_pwd = mem_pwd;
 	}
-	public String getMem_aka() {
-		return mem_aka;
+	public String getMem_name() {
+		return mem_name;
 	}
-	public void setMem_aka(String mem_aka) {
-		this.mem_aka = mem_aka;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 	public String getMem_addr() {
 		return mem_addr;
@@ -72,12 +71,6 @@ public class SearchMgMemberVO {
 	}
 	public void setMem_sns(Character mem_sns) {
 		this.mem_sns = mem_sns;
-	}
-	public String getMem_name() {
-		return mem_name;
-	}
-	public void setMem_name(String mem_name) {
-		this.mem_name = mem_name;
 	}
 	public Date getMem_birth() {
 		return mem_birth;

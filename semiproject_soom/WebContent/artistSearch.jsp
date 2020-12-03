@@ -194,7 +194,7 @@
 				id="fix_prof">
 			<c:if test="${not empty himem }">
 				<c:forEach items="${himem }" var="v" varStatus="s">
-					<a href="#">Hello, ${v.mem_aka }</a>
+					<a href="#">Hello, ${v.mem_id }</a>
 				</c:forEach>
 			</c:if>
 		</div>
