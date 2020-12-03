@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>Jelly Music</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript"
@@ -192,9 +192,9 @@ a:visited {
 						class="fix_each_menu">고객지원센터</label>
 				</div>
 				<ul>
-					<li><a href="../../MemberPostListCtrl">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/MemberPostListCtrl">공지사항</a></li>
 					<li><a href="#">Q&A</a></li>
-					<li><a href="../../freqQues/freqQues.jsp">자주하는 질문</a></li>
+					<li><a href="${pageContext.request.contextPath}/mfreqQues/mfreqQues.jsp">자주하는 질문</a></li>
 					<li><a href="#">로그아웃</a></li>
 				</ul>
 				<div class="fix_each">
@@ -293,11 +293,11 @@ a:visited {
 		</table>
 		<br> <br>
 		<!--페이징 아래 숫자-->
-		<div class="pagediv">
+		<div class="pagediv" style="text-align: center;">
 			<c:if test="${startPage != endPage}">
 				<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 					step="1">
-					<a href="ManagerPostListCtrl?pageNum=${s.count}">${s.count}</a>
+					<a href="MemberPostListCtrl?pageNum=${s.count}">${s.count}</a>
 					<!--변경 : href 경로 -->
 				</c:forEach>
 			</c:if>

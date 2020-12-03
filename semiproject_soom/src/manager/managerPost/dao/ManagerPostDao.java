@@ -47,7 +47,7 @@ public class ManagerPostDao {
 			list = new ArrayList<ManagerPostVo>();
 			do {
 				ManagerPostVo vo = new ManagerPostVo();
-				vo.setP_no(rs.getInt("p_no"));
+				vo.setP_no(rs.getString("p_no"));
 				vo.setP_name(rs.getString("p_name"));
 				vo.setP_content(rs.getString("p_content"));
 				vo.setP_time(rs.getDate("p_time"));
@@ -68,7 +68,7 @@ public class ManagerPostDao {
 		pstmt.setInt(1, strp_no);
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
-			vo.setP_no(rs.getInt("p_no"));
+			vo.setP_no(rs.getString("p_no"));
 			vo.setP_name(rs.getString("p_name"));
 			vo.setP_content(rs.getString("p_content"));
 			vo.setP_time(rs.getDate("p_time"));
@@ -94,13 +94,13 @@ public class ManagerPostDao {
 		return result;
 	}
 
-	public int postUpdate(Connection conn, String p_name, String p_content, int p_no) throws SQLException, Exception {
+	public int postUpdate(Connection conn, String p_name, String p_content, String p_no) throws SQLException, Exception {
 		String sql = "UPDATE post SET p_name = ?, p_content = ? " + "WHERE p_no = ?";
 
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, p_name);
 		pstmt.setString(2, p_content);
-		pstmt.setInt(3, p_no);
+		pstmt.setString(3, p_no);
 
 		int result = pstmt.executeUpdate();
 
@@ -108,12 +108,12 @@ public class ManagerPostDao {
 		return result;
 	}
 
-	public int postDelete(Connection conn, int p_no) throws SQLException, Exception {
+	public int postDelete(Connection conn, String p_no) throws SQLException, Exception {
 		int result = 0;
 		String sql = "DELETE FROM post WHERE p_no = ?";
 
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, p_no);
+		pstmt.setString(1, p_no);
 
 		result = pstmt.executeUpdate();
 

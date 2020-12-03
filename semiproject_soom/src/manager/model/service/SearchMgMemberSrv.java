@@ -40,15 +40,10 @@ public class SearchMgMemberSrv {
 		return list;
 	}
 	
-	public int memDelete(int mem_id) throws Exception {
+	public int getSearchCount(String searchWord) throws Exception {
 		Connection conn = getConnection();
-		int result = 0;
-		result = new SearchMgMemberDao().memDelete(conn, mem_id);
-		if (result != 0) {
-			close(conn);
-		}
-
-		return result;
+		int result = new SearchMgMemberDao().getSearchCount(conn, searchWord);
+		conn.close();
+		return result;			
 	}
-	
 }

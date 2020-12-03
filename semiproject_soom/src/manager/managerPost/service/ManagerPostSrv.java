@@ -71,7 +71,7 @@ public class ManagerPostSrv {
 		return result;
 	}
 
-	public int postUpdate(String p_name, String p_content, int p_no) throws Exception {
+	public int postUpdate(String p_name, String p_content, String p_no) throws Exception {
 		int result = 0;
 		result = dao.postUpdate(conn, p_name, p_content, p_no);
 		if (result != 0) {
@@ -80,7 +80,7 @@ public class ManagerPostSrv {
 		return result;
 	}
 
-	public int postDelete(int p_no) throws Exception {
+	public int postDelete(String p_no) throws Exception {
 		int result = 0;
 		result = dao.postDelete(conn, p_no);
 		if (result != 0) {
