@@ -48,28 +48,28 @@ public class PlayerDao {
 		return pvo;
 	}
 
-	public List<PlayerVO> memberProf(Connection conn, String mem_id) {
-		List<PlayerVO> mvo = new ArrayList<PlayerVO>();
-		String sql = "select * from member where mem_id=?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mem_id);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				do {
-					PlayerVO vo = new PlayerVO();
-					vo.setMem_prof(rs.getString("mem_prof"));
-					mvo.add(vo);
-				} while (rs.next());
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return mvo;
-	}
+//	public List<PlayerVO> memberProf(Connection conn, String mem_id) {
+//		List<PlayerVO> mvo = new ArrayList<PlayerVO>();
+//		String sql = "select * from member where mem_id=?";
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, mem_id);
+//			rs = pstmt.executeQuery();
+//			if (rs.next()) {
+//				do {
+//					PlayerVO vo = new PlayerVO();
+//					vo.setMem_prof(rs.getString("mem_prof"));
+//					mvo.add(vo);
+//				} while (rs.next());
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//		return mvo;
+//	}
 
 	public int clickHeart(Connection conn, String mem_id, String mu_no) {
 //		PlayerVO vo = new PlayerVO();

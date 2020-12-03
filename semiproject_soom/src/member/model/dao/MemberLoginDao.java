@@ -23,7 +23,7 @@ public class MemberLoginDao {
 		try {
 			Context initContext1 = new InitialContext();
 			Context envContext1 = (Context) initContext1.lookup("java:/comp/env");
-			ds = (DataSource) envContext1.lookup("jdbc/jelly");
+			ds = (DataSource) envContext1.lookup("jdbc/extjelly");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

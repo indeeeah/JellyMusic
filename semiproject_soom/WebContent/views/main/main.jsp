@@ -151,11 +151,7 @@
                     </c:if>
                 </div>
                 <div class="for_you">
-                    <c:if test="${not empty himem }">
-                        <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct1">${v.mem_aka }님만을위한추천곡</h1>
-                        </c:forEach>
-                    </c:if>
+                            <h1 id="ct1">${mem_id }님만을위한추천곡</h1>
                     <input type="button" class="more" value="더보기">
                     <table class="fytb">
                         <tr>
@@ -186,11 +182,7 @@
                     </table>
                 </div>
                 <div class="maylike">
-                    <c:if test="${not empty himem }">
-                        <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct2">${v.mem_aka }님이좋아할수도있는아티스트</h1>
-                        </c:forEach>
-                    </c:if>
+                            <h1 id="ct2">${mem_id }님이좋아할수도있는아티스트</h1>
                     <table class="mltb">
                         <tr>
                             <c:if test="${not empty ml }">
@@ -216,11 +208,7 @@
                     </table>
                 </div>
                 <div class="latelyls">
-                    <c:if test="${not empty himem }">
-                        <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct3">${v.mem_aka }님이최근재생한음악</h1>
-                        </c:forEach>
-                    </c:if>
+                            <h1 id="ct3">${mem_id }님이최근재생한음악</h1>
                     <input type="button" class="more" value="더보기">
                     <table class="ltltb">
                         <tr>
@@ -281,8 +269,7 @@
                             <c:if test="${not empty t6p }">
                                 <c:forEach items="${t6p }" var="v" varStatus="s">
                                     <div class="top100_each_r">
-                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" 
-                                        onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="tri_con"> 
+                                        <a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="tri_con"> 
                                         <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="t100_l_album">
                                             </img>
                                             <div class="top100_tri"></div>

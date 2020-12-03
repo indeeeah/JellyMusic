@@ -10,7 +10,7 @@ public class MainVO {
 //	SEAR_HITS    NUMBER       
 //	SEAR_TIME    TIMESTAMP(6)
 
-	private String mem_aka;
+//	private String mem_aka;
 	private String mng_id;
 	private String mem_prop;
 	private String mng_prop;
@@ -28,13 +28,13 @@ public class MainVO {
 	private String art_no;
 	private String al_no;
 	
-	public String getMem_aka() {
-		return mem_aka;
-	}
-
-	public void setMem_aka(String mem_aka) {
-		this.mem_aka = mem_aka;
-	}
+//	public String getMem_aka() {
+//		return mem_aka;
+//	}
+//
+//	public void setMem_aka(String mem_aka) {
+//		this.mem_aka = mem_aka;
+//	}
 
 	public String getMng_id() {
 		return mng_id;

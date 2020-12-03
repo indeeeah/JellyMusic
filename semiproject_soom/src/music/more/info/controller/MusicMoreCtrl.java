@@ -67,7 +67,7 @@ public class MusicMoreCtrl extends HttpServlet {
 			
 			MainService mservice = new MainService();
 			List<MainVO> scm = mservice.showCurrmusic(mem_id);
-			List<MainVO> himem = mservice.helloToMem(mem_id);
+//			List<MainVO> himem = mservice.helloToMem(mem_id);
 			List<MainVO> searlist = mservice.searchWord();
 
 
@@ -85,7 +85,7 @@ public class MusicMoreCtrl extends HttpServlet {
 				request.setAttribute("clist", clist);
 				System.out.println("b");
 				System.out.println("c");
-				request.setAttribute("himem", himem);
+//				request.setAttribute("himem", himem);
 				request.setAttribute("searlist", searlist);
 				request.setAttribute("scm", scm);
 

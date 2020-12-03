@@ -55,12 +55,12 @@ public class FinishRegisterServlet extends HttpServlet {
 		try {
 			MainService mservice = new MainService();
 
-			List<MainVO> himem = mservice.helloToMem(mem_id);
+//			List<MainVO> himem = mservice.helloToMem(mem_id);
 			List<MainVO> searlist = mservice.searchWord();
 			
 			request.setAttribute("mem_id", mem_id);
-			if(himem!=null) {
-				request.setAttribute("himem", himem);
+			if(searlist!=null) {
+//				request.setAttribute("himem", himem);
 				request.setAttribute("searlist", searlist);
 				
 				request.getRequestDispatcher("views/member/finishregister.jsp").forward(request, response);

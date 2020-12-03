@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.model.service.FirstGenreSrv;
 import member.model.vo.FirstGenreVO;
+import member.model.vo.MemberLoginVO;
 
 /**
  * Servlet implementation class FirstGenreCtrl
@@ -51,7 +52,8 @@ public class FirstGenreCtrl extends HttpServlet {
 			List<FirstGenreVO> fgt = fgservice.setGenret();
 			List<FirstGenreVO> fgm = fgservice.setGenrem();
 			List<FirstGenreVO> fgb = fgservice.setGenreb();
-			String mem_id = request.getParameter("mem_id");
+			MemberLoginVO vo = (MemberLoginVO)request.getSession().getAttribute("ssLogInfo");
+			String mem_id = vo.getMem_id();
 			System.out.println("11111111");
 			request.setAttribute("mem_id", mem_id);
 			System.out.println(mem_id);

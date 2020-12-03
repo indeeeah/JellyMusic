@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.model.service.MainService;
 import main.model.vo.MainVO;
+import member.model.vo.MemberLoginVO;
 
 /**
  * Servlet implementation class MainServlet
@@ -45,10 +46,9 @@ public class MainServlet extends HttpServlet {
 
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		HttpSession session = request.getSession();
 		System.out.println("trtrt");
-//		String mem_id = request.getParameter("mem_id");
-		String mem_id = "aaab";
+		MemberLoginVO vo = (MemberLoginVO)request.getSession().getAttribute("ssLogInfo");
+		String mem_id = vo.getMem_id();
 		try {
 			MainService mservice = new MainService();
 			////////꼭 넣어야될 코드///////
