@@ -1,6 +1,7 @@
 package music.musicsearch.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.purchase.membership.model.service.MemberShipSrv;
+import member.purchase.membership.model.vo.MembershipVO;
 import music.musicsearch.model.service.MusicSearchSrv;
 import music.musicsearch.model.vo.MusicSearchVO;
 
@@ -18,7 +21,6 @@ import music.musicsearch.model.vo.MusicSearchVO;
 @WebServlet("/MusicSearchservlet")
 public class MusicSearchservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String MusicSearch = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,7 +35,7 @@ public class MusicSearchservlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		execute(request, response);
 	}
 
 	/**
@@ -41,30 +43,31 @@ public class MusicSearchservlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		execute(request, response);
 	}
-	private void execute(HttpServletRequest request, HttpServletResponse response)
-	         throws ServletException, IOException {
-		 request.setCharacterEncoding("utf-8");
-	      response.setContentType("text/html; charset=UTF-8");
-		try {
-			MusicSearchSrv tSrv = new MusicSearchSrv();
-			List<MusicSearchVO> Toplist = tSrv.getMusicSearchAll();
-			if(MusicSearch!= null) {
-				System.out.println("aaaa");
-				request.setAttribute("TopList", Toplist);
+	
+	private void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		 try {
+			 MusicSearchSrv search1 = new MusicSearchSrv();
+			 String search = request.getParameter("search");
+	         List<MusicSearchVO> Mvo = search1.getMusicSearchAll(search);
+	         if (search != null) {
+	            System.out.println("aaa");
+	            request.setAttribute("search", search);			
 				request.getRequestDispatcher("/MusicSearch.jsp").forward(request, response);
-				
-			}else {
-				System.out.println("bbbb");
-				request.setAttribute("errMsg","");
-				request.getRequestDispatcher("/MusicSearch.jsp");
+			} else {
+				System.out.println("bbb");
+				request.getRequestDispatcher("./error.jsp").forward(request, response);
 			}
-			
-		}catch(Exception e) {
-			System.out.println("cccc");
-			request.setAttribute("errMsg", "잠시 후 다시 확인해 주세요.");
-			request.getRequestDispatcher("/MusicSearch.jsp");
+		} catch (NumberFormatException e) {
+			System.out.println("ccc");
+			request.getRequestDispatcher("./error.jsp").forward(request, response);
+		} catch (NullPointerException e) {
+			System.out.println("ddd");
+			request.getRequestDispatcher("./error.jsp").forward(request, response);
 		}
 	}
 

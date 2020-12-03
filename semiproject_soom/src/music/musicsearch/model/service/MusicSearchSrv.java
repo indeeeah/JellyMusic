@@ -10,9 +10,9 @@ import music.musicsearch.model.dao.MusicSearchDao;
 
 
 public class MusicSearchSrv {
-	public List<MusicSearchVO>getMusicSearchAll(){
+	public List<MusicSearchVO> getMusicSearchAll(String search){
 		Connection conn = getConnection();
-		List<MusicSearchVO> result = new MusicSearchDao().getMusicSearchAll(conn);
+		List<MusicSearchVO> result = new MusicSearchDao().getMusicSearchAll(conn, search);
 		close(conn);
 		return result;
 
