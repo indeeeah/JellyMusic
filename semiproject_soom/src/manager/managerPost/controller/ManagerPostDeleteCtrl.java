@@ -40,7 +40,7 @@ public class ManagerPostDeleteCtrl extends HttpServlet {
 	
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ManagerPostSrv postService = new ManagerPostSrv();
-		int p_no = Integer.parseInt(request.getParameter("p_no"));
+		String p_no = request.getParameter("p_no");
 		try {
 			int result = postService.postDelete(p_no);
 			if(result == 1) {

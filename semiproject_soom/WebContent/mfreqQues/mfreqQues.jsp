@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Jelly Music</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript"
@@ -67,6 +67,7 @@ table, td {
 }
 
 .page_section {
+	padding-bottom: 100px;
 	float: right;
 	width: 820px;
 }
@@ -136,12 +137,15 @@ table thead tr {
 	background-color: rgb(22, 22, 22);
 	font-size: 12px;
 }
+
 .fq1_no {
 	background-color: rgb(46, 49, 66);
 }
+
 .fq1_type {
 	background-color: rgb(46, 49, 66);
 }
+
 .fq1_title {
 	background-color: rgb(46, 49, 66);
 	text-align: left;
@@ -266,9 +270,10 @@ table thead tr {
 						class="fix_each_menu">고객지원센터</label>
 				</div>
 				<ul>
-					<li><a href="../../MemberPostListCtrl">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/MemberPostListCtrl">공지사항</a></li>
 					<li><a href="#">Q&A</a></li>
-					<li><a href="../../mfreqQues/mfreqQues.jsp">자주하는 질문</a></li>
+					<li><a href="${pageContext.request.contextPath}/mfreqQues/mfreqQues.jsp">자주하는
+							질문</a></li>
 					<li><a href="#">로그아웃</a></li>
 				</ul>
 				<div class="fix_each">
@@ -467,20 +472,21 @@ table thead tr {
 				</tbody>
 			</table>
 		</div>
-		<footer id="fix_footer">
-			<hr id="fix_fline">
-			<div id="fix_ft">
-				<div id="fix_copy" class="fix_fc">Copyright ⓒ 2020 Jelly. All
-					rights reserved.</div>
-				<div id="fix_national" class="fix_fc">Republic of Korea</div>
-				<div id="fix_link" class="fix_fc">
-					<a href="#">이용약관</a> | <a href="#">개인정보처리방침</a> | <a href="#">고객센터</a>
-					| <a href="#">이메일주소무단수집거부</a>
-				</div>
-				<div id="fix_info" class="fix_fc">제작자 : 김경태 김수민 곽은지 김지용 장재혁</div>
-			</div>
-		</footer>
 	</div>
+	<footer id="fix_footer">
+		<hr id="fix_fline">
+		<div id="fix_ft">
+			<div id="fix_copy" class="fix_fc">Copyright ⓒ 2020 Jelly. All
+				rights reserved.</div>
+			<div id="fix_national" class="fix_fc">Republic of Korea</div>
+			<div id="fix_link" class="fix_fc">
+				<a href="#">이용약관</a> | <a href="#">개인정보처리방침</a> | <a href="#">고객센터</a>
+				| <a href="#">이메일주소무단수집거부</a>
+			</div>
+			<div id="fix_info" class="fix_fc">제작자 : 김경태 김수민 곽은지 김지용 장재혁</div>
+		</div>
+	</footer>
+
 	<script>
 		$(".tri_con").click(function() {
 			var showTvalue = $(this).next().val();

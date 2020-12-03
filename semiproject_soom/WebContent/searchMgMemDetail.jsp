@@ -60,7 +60,7 @@
 		<c:if test="${startPage != endPage}">
 			<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 				step="1">
-				<a href="SearchMgMemberCtrl.do?pageNum=${s.count}">${s.count}</a>
+				<a href="SearchMgMemberSearchCtrl?pageNum=${s.count}&searchWord=${searchWord}">${s.count}</a>
 				<!--변경 : href 경로 -->
 			</c:forEach>
 		</c:if>
