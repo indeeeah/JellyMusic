@@ -50,8 +50,7 @@ public class FinishRegisterServlet extends HttpServlet {
 	
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		MemberLoginVO vo = (MemberLoginVO)request.getSession().getAttribute("ssLogInfo");
-		String mem_id = vo.getMem_id();
+		String mem_id = request.getParameter("mem_id");
 		try {
 			MainService mservice = new MainService();
 

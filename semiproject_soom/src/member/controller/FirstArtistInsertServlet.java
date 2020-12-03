@@ -48,6 +48,7 @@ public class FirstArtistInsertServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String mem_id = request.getParameter("mem_id");
+			System.out.println("mem_id: "+ mem_id);
 			FirstArtistVO vo = new FirstArtistVO();
 			vo.setMem_id(request.getParameter("mem_id"));
 			vo.setArt_no_1(request.getParameter("art_no_1"));

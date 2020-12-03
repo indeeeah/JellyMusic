@@ -39,7 +39,7 @@
 </head>
 
 <body>
-	<input type="hidden" id="mem_id" value=${idLog } name="mem_id">
+	<input type="hidden" id="mem_id" value="${mem_id }" name="mem_id">
 	<nav id="fix_side">
 		<div id="fix_logo">
 			<div id="fix_logo_img"></div>
@@ -47,12 +47,7 @@
 		</div>
 		<div id="fix_user">
 			<img src="${pageContext.request.contextPath}/image/005-user.svg"
-				id="fix_prof">
-			<c:if test="${not empty himem }">
-				<c:forEach items="${himem }" var="v" varStatus="s">
-					<a href="#">Hello, ${v.mem_id }</a>
-				</c:forEach>
-			</c:if>
+				id="fix_prof"> <a href="#">Hello, ${mem_id }</a>
 		</div>
 		<div id="fix_side_menu">
 			<div>

@@ -48,12 +48,11 @@ public class FirstGenreCtrl extends HttpServlet {
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			String mem_id = request.getParameter("mem_id");
 			FirstGenreSrv fgservice = new FirstGenreSrv();
 			List<FirstGenreVO> fgt = fgservice.setGenret();
 			List<FirstGenreVO> fgm = fgservice.setGenrem();
 			List<FirstGenreVO> fgb = fgservice.setGenreb();
-			MemberLoginVO vo = (MemberLoginVO)request.getSession().getAttribute("ssLogInfo");
-			String mem_id = vo.getMem_id();
 			System.out.println("11111111");
 			request.setAttribute("mem_id", mem_id);
 			System.out.println(mem_id);

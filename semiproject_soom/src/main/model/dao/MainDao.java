@@ -14,28 +14,28 @@ public class MainDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
-	public List<MainVO> helloToMem(Connection conn, String mem_id) {
-		List<MainVO> mvo = new ArrayList<MainVO>();
-		String sql = "select mem_name from member where mem_id=?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mem_id);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				do {
-					MainVO vo = new MainVO();
-					vo.setMem_name(rs.getString("mem_name"));
-					mvo.add(vo);
-				} while (rs.next());
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return mvo;
-	}
+//	public List<MainVO> helloToMem(Connection conn, String mem_id) {
+//		List<MainVO> mvo = new ArrayList<MainVO>();
+//		String sql = "select mem_aka from member where mem_id=?";
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, mem_id);
+//			rs = pstmt.executeQuery();
+//			if (rs.next()) {
+//				do {
+//					MainVO vo = new MainVO();
+//					vo.setMem_aka(rs.getString("mem_aka"));
+//					mvo.add(vo);
+//				} while (rs.next());
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//		return mvo;
+//	}
 
 	public List<MainVO> searchWord(Connection conn) {
 		List<MainVO> svo = new ArrayList<MainVO>();

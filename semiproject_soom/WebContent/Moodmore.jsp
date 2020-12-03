@@ -1243,7 +1243,7 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
         </head>
 
         <body>
-            <input type="hidden" id="mem_id" value=${mem_id } name="mem_id">
+            <input type="hidden" id="mem_id" value="${mem_id }" name="mem_id">
             <nav id="fix_side">
                 <div id="fix_logo">
                     <div id="fix_logo_img"></div>

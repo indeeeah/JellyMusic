@@ -34,7 +34,7 @@
         </head>
 
         <body>
-            <input type="hidden" id="mem_id" value=${mem_id } name="mem_id">
+            <input type="hidden" id="mem_id" value="${mem_id }" name="mem_id">
             <nav id="fix_side">
                 <div id="fix_logo">
                     <div id="fix_logo_img"></div>
@@ -151,11 +151,7 @@
                     </c:if>
                 </div>
                 <div class="for_you">
-                    <c:if test="${not empty himem }">
-                        <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct1">${v.mem_id }님만을위한추천곡</h1>
-                        </c:forEach>
-                    </c:if>
+                            <h1 id="ct1">${mem_id }님만을위한추천곡</h1>
                     <input type="button" class="more" value="더보기">
                     <table class="fytb">
                         <tr>
@@ -186,11 +182,7 @@
                     </table>
                 </div>
                 <div class="maylike">
-                    <c:if test="${not empty himem }">
-                        <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct2">${v.mem_id }님이좋아할수도있는아티스트</h1>
-                        </c:forEach>
-                    </c:if>
+                            <h1 id="ct2">${mem_id }님이좋아할수도있는아티스트</h1>
                     <table class="mltb">
                         <tr>
                             <c:if test="${not empty ml }">
@@ -216,11 +208,7 @@
                     </table>
                 </div>
                 <div class="latelyls">
-                    <c:if test="${not empty himem }">
-                        <c:forEach items="${himem }" var="v" varStatus="s">
-                            <h1 id="ct3">${v.mem_id }님이최근재생한음악</h1>
-                        </c:forEach>
-                    </c:if>
+                            <h1 id="ct3">${mem_id }님이최근재생한음악</h1>
                     <input type="button" class="more" value="더보기">
                     <table class="ltltb">
                         <tr>

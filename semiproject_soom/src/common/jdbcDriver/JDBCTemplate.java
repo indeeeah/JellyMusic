@@ -22,7 +22,7 @@ public class JDBCTemplate {
 		try {
 			Context initContext1 = new InitialContext();
 			Context envContext1 = (Context) initContext1.lookup("java:/comp/env");
-			ds = (DataSource) envContext1.lookup("jdbc/myoracle");
+			ds = (DataSource) envContext1.lookup("jdbc/extjelly");
 			conn = ds.getConnection();
 			if(conn==null) {
 				System.out.println("********** 연결 실패 **********");

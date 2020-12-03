@@ -787,8 +787,7 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
 	<script type="text/javascript">
 		$("form").submit(function() {
 			var frm = document.registerFrm;
-			frm.action = "<%=ctxPath1%>
-		/test/MemberRegisterSrv.do";
+			frm.action = "<%=ctxPath1%>memberRegisterSrv.do";
 			frm.method = "post";
 			frm.submit();
 		});

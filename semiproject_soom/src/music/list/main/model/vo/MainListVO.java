@@ -1,7 +1,7 @@
 package music.list.main.model.vo;
 
 public class MainListVO {
-	private String mem_aka;
+//	private String mem_aka;
 	private String mng_id;
 	private String f_no;
 	private String mem_prop;
@@ -18,12 +18,12 @@ public class MainListVO {
 	private String musicfile;
 	private String albumfile;
 	
-	public String getMem_aka() {
-		return mem_aka;
-	}
-	public void setMem_aka(String mem_aka) {
-		this.mem_aka = mem_aka;
-	}
+//	public String getMem_aka() {
+//		return mem_aka;
+//	}
+//	public void setMem_aka(String mem_aka) {
+//		this.mem_aka = mem_aka;
+//	}
 	public String getMng_id() {
 		return mng_id;
 	}

@@ -53,17 +53,16 @@ public class FirstArtistCtrl extends HttpServlet {
 			List<FirstArtistVO> fat = faservice.setArtistt();
 			List<FirstArtistVO> fam = faservice.setArtistm();
 			List<FirstArtistVO> fab = faservice.setArtistb();
-			MemberLoginVO vo = (MemberLoginVO)request.getSession().getAttribute("ssLogInfo");
-			String mem_id = vo.getMem_id();
+			String mem_id = request.getParameter("mem_id");
+			System.out.println(mem_id);
 			System.out.println("11111111");
-			request.setAttribute("mem_id", mem_id);
 			System.out.println(mem_id);
 			if (fat != null) {
 				System.out.println("222222");
-
 				request.setAttribute("fat", fat);
 				request.setAttribute("fam", fam);
 				request.setAttribute("fab", fab);
+				request.setAttribute("mem_id", mem_id);
 				request.getRequestDispatcher("/views/member/firstArtist.jsp").forward(request, response);;
 				System.out.println("3333333");
 

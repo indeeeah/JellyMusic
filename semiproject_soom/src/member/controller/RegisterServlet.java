@@ -43,17 +43,17 @@ public class RegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		execute(request, response);
 	}
-	
+
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			MainService mservice = new MainService();
 			List<MainVO> searlist = mservice.searchWord();
-			
+
 			if (searlist != null) {
 				request.setAttribute("searlist", searlist);
-				
-				System.out.println(searlist);
+
+				System.out.println(searlist); 
 				request.getRequestDispatcher("/memberRegister.jsp").forward(request, response);
 			} else {
 				System.out.println("xxxxxx");

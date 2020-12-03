@@ -1325,7 +1325,7 @@ padding-bottom: 130px;
         <body>
       
        
-            <input type="hidden" id="mem_id" value=${mem_id } name="mem_id">
+            <input type="hidden" id="mem_id" value="${mem_id }" name="mem_id">
             <nav id="fix_side">
                 <div id="fix_logo">
                     <div id="fix_logo_img"></div>

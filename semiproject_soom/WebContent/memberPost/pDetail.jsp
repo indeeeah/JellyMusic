@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Jelly Music</title>
+<title>공지사항</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript"
@@ -146,7 +146,7 @@ a:visited {
 </style>
 </head>
 <body>
-<input type="hidden" id="mem_id" value=${mem_id } name="mem_id">
+<input type="hidden" id="mem_id" value="${mem_id }" name="mem_id">
 	<nav id="fix_side">
 		<div id="fix_logo">
 			<div id="fix_logo_img"></div>

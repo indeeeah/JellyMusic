@@ -30,17 +30,19 @@
         </head>
 
         <body>
-        <input type="hidden" name="mem_id" value=${mem_id }>
             <form method="post" action="<%=request.getContextPath()%>/firstArtistInsertServlet.do">
                 <header class="fix_header">
-                    <a href="#" id="img_con"> <img src="image/jelly-beans.svg" id="img"></img>
+                    <a href="#" id="img_con"> <img src="${pageContext.request.contextPath}/image/jelly-beans.svg" id="img"></img>
                     </a>
                     <div id="fclist">
                         <div id="jelly_title">
                             <h1>Jelly is thinking about you...</h1>
                         </div>
-                        <img src="image/jelly-beans.svg" class="jimg" id="j1"></img> <img src="image/jelly-beans.svg" class="jimg" id="j2"></img> <img src="image/jelly-beans.svg" class="jimg" id="j3"></img> <input type="hidden" name="mem_id" value=${mem_id
-                            }> <input type="text" class="jname" id="art_no_1" name="art_no_1" readonly>
+                        <img src="${pageContext.request.contextPath}/image/jelly-beans.svg" class="jimg" id="j1"></img>
+                        <img src="${pageContext.request.contextPath}/image/jelly-beans.svg" class="jimg" id="j2"></img>
+                        <img src="${pageContext.request.contextPath}/image/jelly-beans.svg" class="jimg" id="j3"></img> 
+                        <input type="hidden" name="mem_id" value="${mem_id}"> 
+                        <input type="text" class="jname" id="art_no_1" name="art_no_1" readonly>
                         <input type="text" class="jname" id="art_no_2" name="art_no_2" readonly>
                         <input type="text" class="jname" id="art_no_3" name="art_no_3" readonly>
                         <input type="submit" value="GO NEXT" class="gonext">
@@ -56,7 +58,8 @@
                         <tr>
                             <c:if test="${not empty fat}">
                                 <c:forEach items="${fat }" var="vo" varStatus="s">
-                                    <td><input type="checkbox" onclick=CountChecked(this) class="ahck" name="achk" id="achk" value="${vo.art_name }" style='zoom: 12.3;'> <img src="/image${vo.f_name }.jpg" class="fc_a"></img>
+                                    <td><input type="checkbox" onclick=CountChecked(this) class="ahck" name="achk" id="achk" value="${vo.art_name }" style='zoom: 12.3;'> 
+                                    <img src="${pageContext.request.contextPath}/allfile/${vo.f_name }" class="fc_a"></img>
                                     </td>
                                 </c:forEach>
                             </c:if>
@@ -64,7 +67,7 @@
                         <tr>
                             <c:if test="${not empty fam}">
                                 <c:forEach items="${fam }" var="vo" varStatus="s">
-                                    <td><input type="checkbox" onclick=CountChecked(this) class="ahck" name="achk" id="achk" value="${vo.art_name }" style='zoom: 12.3;'> <img src="/image${vo.f_name }.jpg" class="fc_a"></img>
+                                    <td><input type="checkbox" onclick=CountChecked(this) class="ahck" name="achk" id="achk" value="${vo.art_name }" style='zoom: 12.3;'> <img src="${pageContext.request.contextPath}/allfile/${vo.f_name }" class="fc_a"></img>
                                     </td>
                                 </c:forEach>
                             </c:if>
@@ -72,7 +75,7 @@
                         <tr>
                             <c:if test="${not empty fab}">
                                 <c:forEach items="${fab }" var="vo" varStatus="s">
-                                    <td><input type="checkbox" onclick=CountChecked(this) class="ahck" name="achk" id="achk" value="${vo.art_name }" style='zoom: 12.3;'> <img src="/image${vo.f_name }.jpg" class="fc_a"></img>
+                                    <td><input type="checkbox" onclick=CountChecked(this) class="ahck" name="achk" id="achk" value="${vo.art_name }" style='zoom: 12.3;'> <img src="${pageContext.request.contextPath}/allfile/${vo.f_name }" class="fc_a"></img>
                                     </td>
                                 </c:forEach>
                             </c:if>

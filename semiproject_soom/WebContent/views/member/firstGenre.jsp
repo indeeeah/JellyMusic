@@ -33,7 +33,7 @@
 </head>
 
 <body>
-        <input type="hidden" name="mem_id" value=${mem_id }>
+        <input type="hidden" name="mem_id" value="${mem_id }">
 	<form method="post"
 		action="<%=request.getContextPath()%>/firstGenreInsertServlet.do">
 		<header class="fix_header">
@@ -44,10 +44,10 @@
 				<div id="jelly_title">
 					<h1>Jelly is thinking about you...</h1>
 				</div>
-				<img src="image/jelly-beans.svg" class="jimg" id="j1"></img> <img
-					src="image/jelly-beans.svg" class="jimg" id="j2"></img> <img
-					src="image/jelly-beans.svg" class="jimg" id="j3"></img>
-					<input type="hidden" name="mem_id" value=${mem_id }>
+				<img src="${pageContext.request.contextPath}/image/jelly-beans.svg" class="jimg" id="j1"></img> <img
+					src="${pageContext.request.contextPath}/image/jelly-beans.svg" class="jimg" id="j2"></img> <img
+					src="${pageContext.request.contextPath}/image/jelly-beans.svg" class="jimg" id="j3"></img>
+					<input type="hidden" name="mem_id" value="${mem_id }">
 				<input type="text" class="jname" id="mu_genre_1" name="mu_genre_1" readonly>
 				<input type="text" class="jname" id="mu_genre_2" name="mu_genre_2" readonly>
 				<input type="text" class="jname" id="mu_genre_3" name="mu_genre_3" readonly>
@@ -71,7 +71,7 @@
 							<td><input type="checkbox" onclick=CountChecked(this)
 								class="ahck" name="achk" id="achk" value="${vo.gn_name }"
 								style='zoom: 10;'> <img
-								src="/image${vo.f_name }.jpg" class="fc_a"></img></td>
+								src="${pageContext.request.contextPath}/allfile/${vo.f_name }" class="fc_a"></img></td>
 						</c:forEach>
 					</c:if>
 				</tr>

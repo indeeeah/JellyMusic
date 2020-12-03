@@ -1583,6 +1583,7 @@ hr {
 					<li><a href="#">공지사항</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="#">자주하는 질문</a></li>
+					<li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
 				<div class="fix_each">
 					<img src="${pageContext.request.contextPath}/image/006-star.svg"

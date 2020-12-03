@@ -50,7 +50,7 @@ public class MemberRegisterSrv extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter writer = response.getWriter(); //다음 보낼 위치에 스크립트문을 만들수있게 해줌
+//		PrintWriter writer = response.getWriter(); //다음 보낼 위치에 스크립트문을 만들수있게 해줌
 		String mem_id = request.getParameter("mem_id");
 		String mem_pwd = request.getParameter("mem_pwd");
 		String mem_name = request.getParameter("mem_name");
@@ -66,7 +66,7 @@ public class MemberRegisterSrv extends HttpServlet {
 		} else {
 			if (!mem_id.equals("") && !mem_pwd.equals("") && !mem_name.equals("") && !mem_email.equals("") && !mem_phone.equals("") && !mem_gender.equals("")) {
 				MemberLoginVO mvo = new MemberLoginVO();
-				mvo.setMem_birth(mem_birth);
+//				mvo.setMem_birth(mem_birth);
 				mvo.setMem_gender(Integer.parseInt(mem_gender));
 				mvo.setMem_id(mem_id);
 				mvo.setMem_name(mem_name);
@@ -77,9 +77,11 @@ public class MemberRegisterSrv extends HttpServlet {
 					MemberLoginDao dao = new MemberLoginDao();
 					int result = dao.MemberRegisterSrv(mvo);
 					if (result == 1) {
-						writer.println("<script>alert('다음 단계를 수행해주세요!');location.href='firstArtistCtrl.do';</script>");
-						writer.close();
 						request.setAttribute("mem_id", mem_id);
+						System.out.println("mem_id 1" + mem_id);
+						request.getRequestDispatcher("firstArtistCtrl.do").forward(request, response);
+//						writer.println("<script>alert('다음 단계를 수행해주세요!');location.href='firstArtistCtrl.do';</script>");
+//						writer.close();
 //			
 					} else {
 						RequestDispatcher disp1 = request.getRequestDispatcher("../error.jsp");
