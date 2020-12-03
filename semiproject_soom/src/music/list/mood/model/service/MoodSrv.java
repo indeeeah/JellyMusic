@@ -16,12 +16,12 @@ public class MoodSrv {
 		return Mvo;
 		
 	}
-	public List<MainVO> helloToMem(String mem_id) {
-		Connection conn = getConnection();
-		List<MainVO> mvo = new MainDao().helloToMem(conn, mem_id);
-		close(conn);
-		return mvo;
-	}
+//	public List<MainVO> helloToMem(String mem_id) {
+//		Connection conn = getConnection();
+//		List<MainVO> mvo = new MainDao().helloToMem(conn, mem_id);
+//		close(conn);
+//		return mvo;
+//	}
 
 	public List<MainVO> searchWord() {
 		Connection conn = getConnection();

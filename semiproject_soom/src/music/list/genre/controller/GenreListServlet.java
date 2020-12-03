@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.model.vo.MainVO;
 import music.list.genre.model.service.GenreListSrv;
 import music.list.genre.model.vo.GenreListVO;
 
@@ -49,6 +50,8 @@ public class GenreListServlet extends HttpServlet {
 	      try {
 	    	  GenreListSrv gSrv = new GenreListSrv();
 	         List<GenreListVO> genreList = gSrv.setGenreListAll();
+	         List<MainVO> searlist = gSrv.searchWord();
+	         request.setAttribute("searlist", searlist);
 	         if (genreList != null) {
 	            System.out.println("aaa");
 	            request.setAttribute("genreList", genreList);

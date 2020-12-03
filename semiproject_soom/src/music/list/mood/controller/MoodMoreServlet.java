@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.model.vo.MainVO;
 import music.list.mood.model.service.MoodMoreSrv;
 import music.list.mood.model.vo.MoodMoreVO;
 import music.list.top.model.service.TopListSrv;
@@ -49,6 +50,8 @@ public class MoodMoreServlet extends HttpServlet {
 		try {
 			MoodMoreSrv mmSrv = new MoodMoreSrv();
 			List<MoodMoreVO> MoodMore = mmSrv.getMoodMoreAll();
+		      List<MainVO> searlist = mmSrv.searchWord();
+		         request.setAttribute("searlist", searlist);
 			if(MoodMore!= null) {
 				System.out.println("aaaa");
 				request.setAttribute("MoodMoret", MoodMore);
