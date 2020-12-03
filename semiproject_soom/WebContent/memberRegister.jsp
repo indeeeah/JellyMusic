@@ -101,7 +101,7 @@
 		</div>
 		<div class="fix_btn ">
 			<button class="fix_player_btn"
-				onclick="location.href='unLoginMainServlet'">Player</button>
+				onclick="location.href='${pageContext.request.contextPath}/memberLoginServlet'">Player</button>
 		</div>
 	</nav>
 	<header class="fix_header">
@@ -197,8 +197,7 @@
 	<script type="text/javascript">
 		$("form").submit(function() {
 			var frm = document.registerFrm;
-			frm.action = "<%=ctxPath1%>
-		/test/MemberRegisterSrv.do";
+			frm.action = "<%=ctxPath1%>/MemberRegisterSrv.do";
 			frm.method = "post";
 			frm.submit();
 		});

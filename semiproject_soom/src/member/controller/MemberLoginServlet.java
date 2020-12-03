@@ -58,12 +58,12 @@ public class MemberLoginServlet extends HttpServlet {
 				request.getRequestDispatcher("/views/member/memberLogin.jsp").forward(request, response);
 			} else {
 				System.out.println("xxxxxx");
-				request.getRequestDispatcher("/views/main/mainunlogin.jsp").forward(request, response);
+				request.getRequestDispatcher("/views/main/mainunlog.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
 			System.out.println("???????");
 			e.printStackTrace();
-			request.getRequestDispatcher("/views/main/mainunlogin.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/main/mainunlog.jsp").forward(request, response);
 		}
 	}
 

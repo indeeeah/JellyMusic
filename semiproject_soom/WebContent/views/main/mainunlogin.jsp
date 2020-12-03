@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="fix_btn">
-                    <button class="fix_player_btn" onclick="window.open('<%=request.getContextPath()%>/playerCtrl.do','','width=1200,height=720')">Player</button>
+                    <button class="fix_player_btn" onclick="location.href='${pageContext.request.contextPath}/memberLoginServlet'">Player</button>
                 </div>
             </nav>
             <header class="fix_header">

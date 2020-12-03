@@ -16,7 +16,7 @@ import member.model.vo.MemberLoginVO;
 /**
  * Servlet implementation class MemberRegisterSrvCtrl
  */
-@WebServlet("/test/MemberRegisterSrv.do")
+@WebServlet("/memberRegisterSrv.do")
 public class MemberRegisterSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -77,11 +77,11 @@ public class MemberRegisterSrv extends HttpServlet {
 					MemberLoginDao dao = new MemberLoginDao();
 					int result = dao.MemberRegisterSrv(mvo);
 					if (result == 1) {
-						writer.println("<script>alert('회원가입이 완료되었습니다');location.href='../memberLogin.jsp';</script>");
+						writer.println("<script>alert('다음 단계를 수행해주세요!');location.href='member/controller/firstArtistCtrl.do';</script>");
 						writer.close();
 //			
 					} else {
-						RequestDispatcher disp1 = request.getRequestDispatcher("../memberRegister.jsp");
+						RequestDispatcher disp1 = request.getRequestDispatcher("../error.jsp");
 						disp1.forward(request, response);
 					}
 				} catch (Exception e) {

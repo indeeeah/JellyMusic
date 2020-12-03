@@ -1041,6 +1041,16 @@ ul{
 	text-align: center;
 	right: 0px;
 }
+.myBtn{
+	    width: 60px;
+	    height: 25px;
+	    color: rgb(20, 23, 38);
+	    background-color: rgb(244, 244, 244);
+	    outline: none;
+	    border: none;
+	    border-radius: 10px;
+	    margin-top: 8px;
+	}
 /* The Modal (background) */
 .modal {
   display:none;
@@ -1597,9 +1607,8 @@ footer {
 									<div class="art_more_tracks_line4"><a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no }" class="tracks_name"><div>${v.mu_name}</div></a></div>
 									<div class="art_more_tracks_line5"><a href="<%=request.getContextPath() %>/albumMoreServlet?al_no=${v.al_no }" class="tracks_album"><div>${v.al_name }</div></a></div>
 									<div class="art_more_tracks_line6">
-										<button type="button" class="tracks_lyrics myBtn" value="${v.mu_name }">가사보기</button> 
+										<button type="button" class="tracks_lyrics myBtn" value="${v.mu_name }">가사</button> 
 										<a href="<%=request.getContextPath() %>/MembershipServlet" class="tracks_buy"><div>이용권구매</div></a> 
-										<a href="#" class="tracks_more"><div>더보기</div></a>
 									</div>
 								</div>
 									<div id="${v.mu_name }" class="modal">
@@ -1694,10 +1703,10 @@ footer {
 							<input type="hidden" name="art_step" value="<%=art_step%>" class="commenthidden"> 
 							<input type="hidden" name="art_level" value="<%=art_level%>" class="commenthidden">
 							<input type="hidden" name="art_no" value="<%=art_no%>" class="commenthidden">
-							<input type="hidden" name="mem_id" value="${mem_id}" class="commenthidden">
+							<input type="hidden" name="mem_id" value="${idLog}" class="commenthidden">
 							<table border="1">
 								<tr>
-									<td>글쓰기</td>
+									<td>글쓰기<%=art_no%>${idLog}</td>
 								</tr>
 								<tr>
 									<td><input type="text" name="art_cont" id="art_cont"></td>
@@ -1738,7 +1747,7 @@ footer {
 										<div class="artist_comments_hates">
 											<a>hates </a> ${v.art_hates}
 										</div>
-										<c:if test ="${mem_id eq v.mem_id }">
+										<c:if test ="${idLog eq v.mem_id }">
 										<div class="album_comments_delete">
 											<label for="delete">삭제</label><input type="hidden" id="delete" onclick="window.location='artistCommentDeleteCtrl?art_co_no=${v.art_co_no}&art_no=${v.art_no }'" value="삭제">
 										</div>

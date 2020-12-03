@@ -1226,6 +1226,16 @@ hr {
 		text-align: center;
 		right: 0px;
 	}
+	.myBtn{
+	    width: 60px;
+	    height: 25px;
+	    color: rgb(20, 23, 38);
+	    background-color: rgb(244, 244, 244);
+	    outline: none;
+	    border: none;
+	    border-radius: 10px;
+	    margin-top: 8px;
+	}
 	/* The Modal (background) */
 	.modal {
 	  display:none;
@@ -1778,9 +1788,8 @@ hr {
 									</div>
 									<div class="al_more_tracks_line4"><a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no }" class="tracks_music">${v.mu_name}</a></div>
 									<div class="al_more_tracks_line5"><a href="<%=request.getContextPath() %>/artistMoreServlet?art_no=${v.art_no }" class="tracks_name">${v.art_name }</a></div>
-									<div class="al_more_tracks_line6"><button type="button" class="tracks_lyrics myBtn" value="${v.mu_name }">가사보기</button></div>
+									<div class="al_more_tracks_line6"><button type="button" class="tracks_lyrics myBtn" value="${v.mu_name }">가사</button></div>
 									<div class="al_more_tracks_line7"><a href="<%=request.getContextPath() %>/MembershipServlet" class="tracks_buy">이용권구매</a></div>
-									<div class="al_more_tracks_line8"><a href="#" class="tracks_more">더보기</a></div>
 								</div>
 								<div id="${v.mu_name }" class="modal">
 									<div class="modal-content ">
@@ -1875,7 +1884,7 @@ hr {
 							<input type="hidden" name="al_step" value="<%=al_step%>" class="commenthidden"> 
 							<input type="hidden" name="al_level" value="<%=al_level%>" class="commenthidden">
 							<input type="hidden" name="al_no" value="<%=al_no%>" class="commenthidden">
-							<input type="hidden" name="mem_id" value="${mem_id}" class="commenthidden">
+							<input type="hidden" name="mem_id" value="${idLog}" class="commenthidden">
 							<table border="1">
 								<tr>
 									<td>글쓰기</td>
@@ -1885,7 +1894,7 @@ hr {
 								<tr>
 									<td colspan="2">
 										<input type="submit" value="글등록">
-										<input type="reset" value="${mem_id}"> 
+										<input type="reset" value="${idLog}"> 
 									</td>
 								</tr>
 							</table>
@@ -1918,7 +1927,7 @@ hr {
 										<div class="album_comments_hates">
 											<a>hates </a> ${v.al_hates}
 										</div>
-										<c:if test ="${mem_id eq v.mem_id }">
+										<c:if test ="${idLog eq v.mem_id }">
 										<div class="album_comments_delete">
 											<input type="button" onclick="window.location='albumCommentDeleteCtrl?al_co_no=${v.al_co_no}&al_no=${v.al_no }'" value="삭제">
 										</div>

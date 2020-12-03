@@ -39,7 +39,7 @@
 </head>
 
 <body>
-	<input type="hidden" id="mem_id" value=${mem_id } name="mem_id">
+	<input type="hidden" id="mem_id" value=${idLog } name="mem_id">
 	<nav id="fix_side">
 		<div id="fix_logo">
 			<div id="fix_logo_img"></div>
@@ -50,7 +50,7 @@
 				id="fix_prof">
 			<c:if test="${not empty himem }">
 				<c:forEach items="${himem }" var="v" varStatus="s">
-					<a href="#">Hello, ${v.mem_aka }</a>
+					<a href="#">Hello, ${v.mem_id }</a>
 				</c:forEach>
 			</c:if>
 		</div>
@@ -244,13 +244,13 @@
 						</a>
 					</c:forEach>
 					<div class="option_buy">
-					<c:if test="${empty mem_id }">
+					<c:if test="${empty idLog }">
 						<a href="<%=request.getContextPath()%>/memberLoginServlet">	<!-- 로그정보가 없으면 로그인화면으로 -->
 					</c:if>
-					<c:if test="${not empty mem_id && empty membership }">
+					<c:if test="${not empty idLog && empty membership }">
 						<a href="<%=request.getContextPath()%>/MembershipServlet">	<!-- 로그정보가 비어있지 않으면서 멤버쉽정보가 없으면 이용권구매로 -->
 					</c:if>
-					<c:if test="${not empty mem_id && not empty membership }">
+					<c:if test="${not empty idLog && not empty membership }">
 						<button class="buy_btn">이용권구매</button></a>
 					</c:if>
 					</div>
@@ -391,7 +391,7 @@
 		<div class="music_more_comments">
 			<div id="ct6">댓글</div>
 			<hr class="up">
-			<c:if test="${not empty mem_id }">
+			<c:if test="${not empty idLog }">
 			<form method="post"
 				action="<%=request.getContextPath()%>/musicCommentWriteCtrl.lo"
 				class="music_comments_write">
@@ -408,7 +408,7 @@
 					type="hidden" name="mu_step" value="<%=mu_step%>"
 					class="commenthidden"> <input type="hidden" name="mu_level"
 					value="<%=mu_level%>" class="commenthidden"> <input
-					type="hidden" name="mem_id" value="${mem_id }"
+					type="hidden" name="mem_id" value="${idLog }"
 					class="commenthidden" id="mem_id"> <input type="hidden"
 					name="mu_no" value="<%=mu_no%>" class="commenthidden">
 				<table class="writeBox">
@@ -422,7 +422,7 @@
 				</table>
 			</form>
 			</c:if>
-			<c:if test="${empty mem_id }">
+			<c:if test="${empty idLog }">
 			<form method="post"
 				action="<%=request.getContextPath()%>/memberLoginServlet"
 				class="music_comments_write">
@@ -439,7 +439,7 @@
 					type="hidden" name="mu_step" value="<%=mu_step%>"
 					class="commenthidden"> <input type="hidden" name="mu_level"
 					value="<%=mu_level%>" class="commenthidden"> <input
-					type="hidden" name="mem_id" value="${mem_id }"
+					type="hidden" name="mem_id" value="${idLog }"
 					class="commenthidden" id="mem_id"> <input type="hidden"
 					name="mu_no" value="<%=mu_no%>" class="commenthidden">
 				<table class="writeBox">
@@ -485,8 +485,8 @@
 								</div>
 							</td>
 							<td rowspan="2" width="50px"><c:set var="writer"
-									value="${mem_id } "></c:set> <c:if
-									test="${mem_id eq v.mem_id }">
+									value="${idLog } "></c:set> <c:if
+									test="${idLog eq v.mem_id }">
 									<div class="music_comments_delete">
 										<input type="button"
 											onclick="window.location='musicCommentDeleteCtrl?mu_co_no=${v.mu_co_no}&mu_no=${v.mu_no }'"

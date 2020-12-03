@@ -17,12 +17,12 @@ public class PlayerSrv {
 		return pvo;
 	}
 
-	public List<PlayerVO> memberProf(String mem_id) {
-		Connection conn = getConnection();
-		List<PlayerVO> mvo = new PlayerDao().memberProf(conn, mem_id);
-		close(conn);
-		return mvo;
-	}
+//	public List<PlayerVO> memberProf(String mem_id) {
+//		Connection conn = getConnection();
+//		List<PlayerVO> mvo = new PlayerDao().memberProf(conn, mem_id);
+//		close(conn);
+//		return mvo;
+//	}
 
 	public int clickHeart(String mem_id, String mu_no) {
 		Connection conn = getConnection();

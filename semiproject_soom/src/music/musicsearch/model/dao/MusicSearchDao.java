@@ -16,14 +16,20 @@ import music.musicsearch.model.vo.MusicSearchVO;
 public class MusicSearchDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-
-	public List<MusicSearchVO>getMusicSearchAll(Connection conn) {
+	public List<MusicSearchVO>getMeusicSearchAll(Connection conn, String search) {
 		List<MusicSearchVO> list = new ArrayList<MusicSearchVO>();
-		String sql = "select mu_no, mu_name, art.art_no, art_name, mu_ly, al.al_no, al.al_name from music m"
-				+ "    left outer join album al on m.al_no = al.al_no"
-				+ "    left outer join artist art on m.art_no = art.art_no" + "    where al.al_no=?";
+		String sql = "select * from (select ROWNUM rnum, mu.* from " + 
+				"    (select m.mu_no, m.mu_name, art.art_no, art.art_name, al.f_no from album al " + 
+				"        left outer join music m on m.al_no = al.al_no " + 
+				"        left outer join artist art on m.art_no = art.art_no " + 
+				"        where m.mu_name like ? order by mu_every_play desc) " + 
+				"    mu) " + 
+				"	where rnum >= 1 and rnum <= 6";
+		String a = "%"+search+"%";
+		System.out.println(a);
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -33,8 +39,9 @@ public class MusicSearchDao {
 					vo.setMu_name(rs.getString("mu_name"));
 					vo.setArt_no(rs.getString("art_no"));
 					vo.setArt_name(rs.getString("art_name"));
+					vo.setF_no(rs.getString("f_no"));
+					vo.setAl_name(rs.getString("al_naem"));
 					vo.setAl_no(rs.getString("al_no"));
-					vo.setAl_name(rs.getString("al_name"));
 					vo.setMu_ly(rs.getString("mu_ly"));
 					list.add(vo);
 				} while (rs.next());
