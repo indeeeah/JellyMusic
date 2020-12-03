@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.model.vo.MainVO;
 import music.list.memberRec.model.service.MemberRecSrv;
 import music.list.memberRec.model.vo.MemberRecVO;
 
@@ -41,6 +42,8 @@ public class MemberRecServlet extends HttpServlet {
 			System.out.println(request.getParameter("mu_no"));
 			MemberRecSrv MemberRec = new MemberRecSrv();
 			List<MemberRecVO> rvo = MemberRec.setMemberRecAll();
+		      List<MainVO> searlist = MemberRec.searchWord();
+		         request.setAttribute("searlist", searlist);
 			if(rvo != null) {
 				System.out.println("플레이리스트 추가 성공!");
 			} else {

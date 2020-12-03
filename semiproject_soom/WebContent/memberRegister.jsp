@@ -197,7 +197,7 @@
 	<script type="text/javascript">
 		$("form").submit(function() {
 			var frm = document.registerFrm;
-			frm.action = "<%=ctxPath1%>/MemberRegisterSrv.do";
+			frm.action = "<%=ctxPath1%>/memberRegisterSrv.do";
 			frm.method = "post";
 			frm.submit();
 		});

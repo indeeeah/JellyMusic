@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="fix_btn ">
-                    <button class="fix_player_btn" onclick="location.href='unLoginMainServlet'">Player</button>
+                    <button class="fix_player_btn" onclick="location.href='${pageContext.request.contextPath}/memberLoginServlet'">Player</button>
                 </div>
             </nav>
             <header class="fix_header">

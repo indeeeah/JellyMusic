@@ -53,6 +53,8 @@ public class MembershipServlet extends HttpServlet {
 	      try {
 	         MemberShipSrv msSrv = new MemberShipSrv();
 	         List<MembershipVO> membership = msSrv.getMembershipAll();
+	         List<MainVO> searlist = msSrv.searchWord();
+	         request.setAttribute("searlist", searlist);
 
 	         if (membership != null) {
 	            System.out.println("aaa");
