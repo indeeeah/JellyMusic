@@ -30,13 +30,10 @@
 				<td>아이디</td>
 				<td>비밀번호</td>
 				<td>이름</td>
-				<td>주소</td>
 				<td>이메일</td>
 				<td>전화번호</td>
-				<td>sns수신여부</td>
-				<td>생일</td>
-				<td>가입일</td>
-				<td>탈퇴일</td>
+				<td>성별</td>
+				<td>가입일</td>	
 			</tr>
 		<c:if test="${not empty memList}">
 			<c:forEach items="${memList}" var="mvo" varStatus="s">
@@ -46,13 +43,10 @@
 				<td>${mvo.mem_id}</td>  
 				<td>${mvo.mem_pwd}</td>  
 				<td>${mvo.mem_name}</td>  
-				<td>${mvo.mem_addr}</td>  
 				<td>${mvo.mem_email}</td>  
 				<td>${mvo.mem_phone}</td>  
-				<td>${mvo.mem_sns}</td>  
-				<td>${mvo.mem_birth}</td>
+				<td>${mvo.mem_sexual}</td>
 				<td>${mvo.mem_reg_date}</td>
-				<td>${mvo.mem_wd_date}</td>
 			</tr>
 			</c:forEach>
 		</c:if>

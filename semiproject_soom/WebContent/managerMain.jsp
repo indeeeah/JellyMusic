@@ -48,7 +48,7 @@
                 <ul>
                     <li><a href="ManagerPostListCtrl">공지사항 관리</a></li>
                     <li><a href="freqQues/freqQues.jsp">자주하는 질문 관리</a></li>
-                    <li><a href="postListServlet">Q&A관리</a></li>
+                    <li><a href="#">Q&A관리</a></li>
                 </ul>
                 <div class="each">
                     <label for="stat" class="m1">통계(구현 마지막에)</label>

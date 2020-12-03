@@ -19,19 +19,14 @@ public class SearchMgMemberDao {
 		List<SearchMgMemberVO> list = null;
 		String sql = "select * from (select rownum rnum, B.* from (select * from member order by mem_id) B)"
 				+ " where rnum >=? and rnum <=?";
-		// mem_id varchar2(30) ,
-		// mem_pwd varchar2(30) not null,
-		// mem_aka varchar2(30) unique not null,
-		// mem_addr varchar2(90) not null,
-		// mem_email varchar2(30) not null,
-		// mem_phone number(11) not null,
-		// mem_sns char(1) not null,
-		// mem_name varchar2(30) not null,
-		// mem_birth date not null,
-		// mem_reg_date date default sysdate,
-		// mem_wd_date date,
-		// CONSTRAINT PK_MEMID PRIMARY KEY (mem_id),
-		// CONSTRAINT CHK_SNS CHECK (mem_sns IN (0, 1))
+//		mem_id varchar2(30) ,
+//		mem_pwd varchar2(30) not null,
+//		mem_name varchar2(30) not null,
+//		mem_email varchar2(30) not null,
+//		mem_phone number(11) not null,
+//		mem_gender number(1) not null,
+//		mem_reg_date date default sysdate,
+
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, start);
 		pstmt.setInt(2, end);
@@ -44,14 +39,11 @@ public class SearchMgMemberDao {
 				mvo.setMem_id(rs.getString("mem_id"));
 				mvo.setMem_pwd(rs.getString("mem_pwd"));
 				mvo.setMem_name(rs.getString("mem_name"));
-				mvo.setMem_addr(rs.getString("mem_addr"));
 				mvo.setMem_email(rs.getString("mem_email"));
 				mvo.setMem_phone(rs.getInt("mem_phone"));
-				mvo.setMem_sns(rs.getString("mem_sns").charAt(0));
-				mvo.setMem_name(rs.getString("mem_name"));
-				mvo.setMem_birth(rs.getDate("mem_birth"));
+				mvo.setMem_gender(rs.getInt("mem_gender"));
 				mvo.setMem_reg_date(rs.getDate("mem_reg_date"));
-				mvo.setMem_wd_date(rs.getDate("mem_wd_date"));
+				
 				list.add(mvo);
 			} while (rs.next());
 			close(rs);
@@ -93,14 +85,10 @@ public class SearchMgMemberDao {
 				mvo.setMem_id(rs.getString("mem_id"));
 				mvo.setMem_pwd(rs.getString("mem_pwd"));
 				mvo.setMem_name(rs.getString("mem_name"));
-				mvo.setMem_addr(rs.getString("mem_addr"));
 				mvo.setMem_email(rs.getString("mem_email"));
 				mvo.setMem_phone(rs.getInt("mem_phone"));
-				mvo.setMem_sns(rs.getString("mem_sns").charAt(0));
-				mvo.setMem_name(rs.getString("mem_name"));
-				mvo.setMem_birth(rs.getDate("mem_birth"));
+				mvo.setMem_gender(rs.getInt("mem_gender"));
 				mvo.setMem_reg_date(rs.getDate("mem_reg_date"));
-				mvo.setMem_wd_date(rs.getDate("mem_wd_date"));
 				list.add(mvo);
 			} while (rs.next());
 		}
@@ -108,18 +96,22 @@ public class SearchMgMemberDao {
 		close(pstmt);
 		return list;
 	}
-
-	public int memDelete(Connection conn, int mem_id) throws SQLException, Exception {
-		int result = 0;
-		String sql = "delete from member where mem_id = ?";
-
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, mem_id);
-
-		result = pstmt.executeUpdate();
-
-		close(rs);
-		close(pstmt);
-		return result;
+	
+	public int getSearchCount(Connection conn, String searchWord) throws SQLException {
+		int cnt = 0;
+		String sql = "select COUNT(*) from (select ROWNUM rnum, n.* from (select * from member where mem_id like ? order by mem_id desc) n)";
+		try {
+			String searchWord1 = "%" + searchWord + "%";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchWord1);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				cnt = rs.getInt(1);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return cnt;
 	}
 }
