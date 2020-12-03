@@ -57,27 +57,7 @@ a {
     float: left;
 }
 
-#fix_user {
-    width: 259px;
-    height: 60px;
-    text-align: left;
-}
 
-#fix_user>a {
-    margin-right: 30px;
-    line-height: 60px;
-    left: 0px;
-    font-size: 16px;
-    margin-left: 10px;
-    font-weight: bold
-}
-
-#fix_prof {
-    width: 30px;
-    height: 60px;
-    float: left;
-    margin-left: 32px;
-}
 
 #fix_side_menu {
     overflow: hidden;

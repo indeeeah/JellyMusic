@@ -40,7 +40,7 @@ overflow:hidden;
 		</div>
 		<div id="fix_user">
 			<img src="${pageContext.request.contextPath}/image/005-user.svg" id="fix_prof">
-                            <a href="#">Hello, ${mem_id }</a>
+                            <a href="#">Hello, ${ssLogInfo.mem_id }</a>
                 </div>
 		<div id="fix_side_menu">
 			<div>

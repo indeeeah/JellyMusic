@@ -53,7 +53,7 @@ public class PostWriteCtrl extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		//request.getContextPath();	// -->프로젝트 이름 / url상의 context root 이름
-		realFolder = "d:\\abc";
+		realFolder = "/Users/indeeah/Desktop/jelly_post";
 		System.out.println(realFolder);
 
 		try {

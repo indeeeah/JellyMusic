@@ -20,7 +20,7 @@ public class ManagerAllfileSrv {
 		try {
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			ds = (DataSource) envContext.lookup("jdbc/myoracle");
+			ds = (DataSource) envContext.lookup("jdbc/extjelly");
 			conn = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();

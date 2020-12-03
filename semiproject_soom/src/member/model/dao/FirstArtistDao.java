@@ -17,10 +17,10 @@ public class FirstArtistDao {
 
 	public List<FirstArtistVO> setArtistt(Connection conn) {
 		List<FirstArtistVO> fvo = new ArrayList<FirstArtistVO>();
-		String sql = "select * from (select rownum rnum, m.* " + "from (select art_name, avg(mu_every_play), f_name "
-				+ "from artist join music " + "on artist.art_no = music.art_no "
-				+ "inner join allfile on artist.f_no = allfile.f_no " + "group by art_name, f_name "
-				+ "order by avg(mu_every_play) desc) m) " + "where rnum between 1 and 6 order by dbms_random.value";
+		String sql = "select * from (select rownum rnum, m.* from (select art_name, avg(mu_every_play), f_name, artist.f_no " + 
+				"from artist join music on artist.art_no = music.art_no " + 
+				"inner join allfile on artist.f_no = allfile.f_no group by art_name, f_name, artist.f_no " + 
+				"order by avg(mu_every_play) desc) m) where rnum between 1 and 6 order by dbms_random.value";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -29,6 +29,7 @@ public class FirstArtistDao {
 					FirstArtistVO vo = new FirstArtistVO();
 					vo.setArt_name(rs.getString("art_name"));
 					vo.setF_name(rs.getString("f_name"));
+					vo.setF_no(rs.getString("f_no"));
 					fvo.add(vo);
 				} while (rs.next());
 			}
@@ -43,10 +44,10 @@ public class FirstArtistDao {
 
 	public List<FirstArtistVO> setArtistm(Connection conn) {
 		List<FirstArtistVO> fvo = new ArrayList<FirstArtistVO>();
-		String sql = "select * from (select rownum rnum, m.* " + "from (select art_name, avg(mu_every_play), f_name "
-				+ "from artist join music " + "on artist.art_no = music.art_no "
-				+ "inner join allfile on artist.f_no = allfile.f_no " + "group by art_name, f_name "
-				+ "order by avg(mu_every_play) desc) m) " + "where rnum between 7 and 12 order by dbms_random.value";
+		String sql = "select * from (select rownum rnum, m.* from (select art_name, avg(mu_every_play), f_name, artist.f_no " + 
+				"from artist join music on artist.art_no = music.art_no " + 
+				"inner join allfile on artist.f_no = allfile.f_no group by art_name, f_name, artist.f_no " + 
+				"order by avg(mu_every_play) desc) m) where rnum between 7 and 12 order by dbms_random.value";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -55,6 +56,7 @@ public class FirstArtistDao {
 					FirstArtistVO vo = new FirstArtistVO();
 					vo.setArt_name(rs.getString("art_name"));
 					vo.setF_name(rs.getString("f_name"));
+					vo.setF_no(rs.getString("f_no"));
 					fvo.add(vo);
 				} while (rs.next());
 			}
@@ -69,10 +71,10 @@ public class FirstArtistDao {
 
 	public List<FirstArtistVO> setArtistb(Connection conn) {
 		List<FirstArtistVO> fvo = new ArrayList<FirstArtistVO>();
-		String sql = "select * from (select rownum rnum, m.* " + "from (select art_name, avg(mu_every_play), f_name "
-				+ "from artist join music " + "on artist.art_no = music.art_no "
-				+ "inner join allfile on artist.f_no = allfile.f_no " + "group by art_name, f_name "
-				+ "order by avg(mu_every_play) desc) m) " + "where rnum between 13 and 18 order by dbms_random.value";
+		String sql = "select * from (select rownum rnum, m.* from (select art_name, avg(mu_every_play), f_name, artist.f_no " + 
+				"from artist join music on artist.art_no = music.art_no " + 
+				"inner join allfile on artist.f_no = allfile.f_no group by art_name, f_name, artist.f_no " + 
+				"order by avg(mu_every_play) desc) m) where rnum between 13 and 18 order by dbms_random.value";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -81,6 +83,7 @@ public class FirstArtistDao {
 					FirstArtistVO vo = new FirstArtistVO();
 					vo.setArt_name(rs.getString("art_name"));
 					vo.setF_name(rs.getString("f_name"));
+					vo.setF_no(rs.getString("f_no"));
 					fvo.add(vo);
 				} while (rs.next());
 			}

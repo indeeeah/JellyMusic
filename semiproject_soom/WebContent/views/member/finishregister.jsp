@@ -26,19 +26,46 @@
 		url('${pageContext.request.contextPath}/image/logo.svg');
 	background-size: 100px;
 }
+
+#fix_user {
+    width: 209px;
+    height: 60px;
+    margin-left: 25px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#fix_user>a {
+    display: block;
+    color: rgb(244, 244, 244);
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 30px;
+    width: 100px;
+    border: 2px solid rgb(244, 244, 244);
+    border-radius: 20px;
+    margin-left: 54.5px;
+}
+
+#fix_user>a:hover {
+    color: black;
+    background-color: rgb(244, 244, 244);
+}
 </style>
 </head>
 
 <body>
-	<input type="hidden" id="mem_id" value=${mem_id }>
+	<input type="hidden" id="mem_id" value="${mem_id }">
 	<nav id="fix_side">
 		<div id="fix_logo">
 			<div id="fix_logo_img"></div>
-			<a href="mainServlet" id="fix_logo_title">Jelly Music</a>
+			<a href="unLoginMainServlet" id="fix_logo_title">Jelly Music</a>
 		</div>
 		<div id="fix_user">
-			<img src="${pageContext.request.contextPath}/image/005-user.svg"
-				id="fix_prof"> <a href="#">Hello, ${mem_id }</a>
+			<a href="${pageContext.request.contextPath}/memberLoginServlet">Login</a>
 		</div>
 		<div id="fix_side_menu">
 			<div>
@@ -55,16 +82,15 @@
 						class="fix_each_menu">마이페이지</label>
 				</div>
 				<ul>
-					<li><a href="#">구매내역</a></li>
-					<li><a href="#">보관함</a></li>
-					<li><a href="#">계정설정</a></li>
-					<li><a href="#">로그아웃</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
 				<div class="fix_each">
 					<img
 						src="${pageContext.request.contextPath}/image/003-play-button.svg"
 						class="fix_menu_icon"> <label for="song"
-						class="fix_each_menu" onclick="location.href='mainListCtrl.do';">노래</label>
+						class="fix_each_menu"
+						onclick="location.href='unLoginMainListCtrl.do';">노래</label>
 				</div>
 				<ul>
 					<li><a href="#">실시간 차트</a></li>
@@ -92,7 +118,6 @@
 					<li><a href="#">공지사항</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="#">자주하는 질문</a></li>
-					<li><a href="#">로그아웃</a></li>
 				</ul>
 				<div class="fix_each">
 					<img src="${pageContext.request.contextPath}/image/006-star.svg"
@@ -103,7 +128,7 @@
 		</div>
 		<div class="fix_btn">
 			<button class="fix_player_btn"
-				onclick="window.open('<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}','','width=1200,height=720')">Player</button>
+				onclick="location.href='${pageContext.request.contextPath}/memberLoginServlet'">Player</button>
 		</div>
 	</nav>
 	<header class="fix_header">
@@ -144,11 +169,11 @@
 		<div id="j_con">
 			<div id="j_img"></div>
 			<p id="jm">"Welcome to the Jelly Music"</p>
-					<div id="f1">${mem_id }님의 가입을 환영합니다!</div>
-					<div id="f2">Jelly가 최선을 다해 ${mem_id }님의 취향을 분석할 거예요</div>
+			<div id="f1">${mem_id }님의가입을 환영합니다!</div>
+			<div id="f2">Jelly가 최선을 다해 ${mem_id }님의 취향을 분석할 거예요</div>
 			<div id="f3">그러니까 좋아하는 음악이 나오면 하트를 눌러 Jelly에게 알려주세요</div>
 			<input type="button" id="gomain" value="메인으로 이동"
-				onclick="location.href='mainServlet';">
+				onclick="location.href='unLoginMainServlet';">
 		</div>
 	</div>
 	<footer id="fix_footer">

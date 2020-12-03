@@ -453,13 +453,10 @@ public class MainDao {
 
 	public List<MainVO> showCurrmusic(Connection conn, String mem_id) {
 		List<MainVO> mvo = new ArrayList<MainVO>();
-		String sql = "select currmusic.*, mu_name, art_name, al_name, a.f_name musicfile, b.f_name albumfile from currmusic " + 
-				"join music on currmusic.mu_no=music.mu_no " + 
-				"inner join artist on music.art_no=artist.art_no " + 
-				"inner join album on music.al_no=album.al_no " + 
-				"inner join allfile a on music.f_no = a.f_no " + 
-				"inner join allfile b on album.f_no = b.f_no " + 
-				"where mem_id=?";
+		String sql = "select currmusic.*, mu_name, art_name, al_name, album.al_no, artist.art_no, a.f_name musicfile, b.f_name albumfile from currmusic " + 
+				"				join music on currmusic.mu_no=music.mu_no " + 
+				"				inner join artist on music.art_no=artist.art_no " + 
+				"				inner join album on music.al_no=album.al_no inner join allfile a on music.f_no = a.f_no inner join allfile b on album.f_no = b.f_no where mem_id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mem_id);

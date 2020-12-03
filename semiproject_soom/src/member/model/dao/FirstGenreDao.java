@@ -26,6 +26,7 @@ public class FirstGenreDao {
 			if (rs.next()) {
 				do {
 					FirstGenreVO vo = new FirstGenreVO();
+					vo.setGn_no(rs.getString("gn_no"));
 					vo.setGn_name(rs.getString("gn_name"));
 					vo.setF_name(rs.getString("f_name"));
 					fvo.add(vo);
@@ -51,6 +52,7 @@ public class FirstGenreDao {
 			if (rs.next()) {
 				do {
 					FirstGenreVO vo = new FirstGenreVO();
+					vo.setGn_no(rs.getString("gn_no"));
 					vo.setGn_name(rs.getString("gn_name"));
 					vo.setF_name(rs.getString("f_name"));
 					fvo.add(vo);
@@ -76,6 +78,7 @@ public class FirstGenreDao {
 			if (rs.next()) {
 				do {
 					FirstGenreVO vo = new FirstGenreVO();
+					vo.setGn_no(rs.getString("gn_no"));
 					vo.setGn_name(rs.getString("gn_name"));
 					vo.setF_name(rs.getString("f_name"));
 					fvo.add(vo);

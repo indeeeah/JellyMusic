@@ -7,6 +7,7 @@ public class FirstArtistVO {
 	private String art_no_1;
 	private String art_no_2;
 	private String art_no_3;
+	private String f_no;
 	
 	public String getF_name() {
 		return f_name;
@@ -43,6 +44,12 @@ public class FirstArtistVO {
 	}
 	public void setArt_no_3(String art_no_3) {
 		this.art_no_3 = art_no_3;
+	}
+	public String getF_no() {
+		return f_no;
+	}
+	public void setF_no(String f_no) {
+		this.f_no = f_no;
 	}
 	
 	

@@ -32,7 +32,6 @@
                 }
             </style>
         </head>
-
         <body>
             <input type="hidden" id="mem_id" value="${mem_id }" name="mem_id">
             <nav id="fix_side">
@@ -42,7 +41,7 @@
                 </div>
                 <div id="fix_user">
                     <img src="${pageContext.request.contextPath}/image/005-user.svg" id="fix_prof">
-                            <a href="#">Hello, ${mem_id }</a>
+                            <a href="#">Hello, ${ssLogInfo.mem_id }</a>
                 </div>
                 <div id="fix_side_menu">
                     <div>
@@ -52,19 +51,16 @@
                             <img src="${pageContext.request.contextPath}/image/007-settings.svg" class="fix_menu_icon"> <label for="login" class="fix_each_menu">마이페이지</label>
                         </div>
                         <ul>
-                            <li><a href="#">구매내역</a></li>
-                            <li><a href="#">보관함</a></li>
-                            <li><a href="#">계정설정</a></li>
                             <li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
                         </ul>
                         <div class="fix_each">
                             <img src="${pageContext.request.contextPath}/image/003-play-button.svg" class="fix_menu_icon"> <label for="song" class="fix_each_menu" onclick="location.href='mainListCtrl.do';">노래</label>
                         </div>
                         <ul>
-                            <li><a href="#">실시간 차트</a></li>
+                            <li><a href="">실시간 차트</a></li>
                             <li><a href="#">하트 차트</a></li>
-                            <li><a href="#">장르</a></li>
-                            <li><a href="#">무드별</a></li>
+                            <li><a href="<%=request.getContextPath()%>/Genre.jsp">장르</a></li>
+                            <li><a href="<%=request.getContextPath()%>/Mood.jsp">무드별</a></li>
                         </ul>
                         <div class="fix_each">
                             <img src="${pageContext.request.contextPath}/image/002-music-1.svg" class="fix_menu_icon"> <label for="myplaylist" class="fix_each_menu">마이플레이리스트</label>
@@ -76,10 +72,9 @@
                             <img src="${pageContext.request.contextPath}/image/008-internet.svg" class="fix_menu_icon"> <label for="help" class="fix_each_menu">고객지원센터</label>
                         </div>
                         <ul>
-                            <li><a href="#">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/MemberPostListCtrl">공지사항</a></li>
                             <li><a href="${pageContext.request.contextPath}/postListServlet">Q&A</a></li>
-                            <li><a href="#">자주하는 질문</a></li>
-                            <li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mfreqQues/mfreqQues.jsp">자주하는 질문</a></li>
                         </ul>
                         <div class="fix_each">
                             <img src="${pageContext.request.contextPath}/image/006-star.svg" class="fix_menu_icon"> <label for="membership" class="fix_each_menu">이용권구매</label>
@@ -151,7 +146,7 @@
                     </c:if>
                 </div>
                 <div class="for_you">
-                            <h1 id="ct1">${mem_id }님만을위한추천곡</h1>
+                            <h1 id="ct1">${ssLogInfo.mem_id }님만을위한추천곡</h1>
                     <input type="button" class="more" value="더보기">
                     <table class="fytb">
                         <tr>
@@ -171,9 +166,10 @@
                                 <c:forEach items="${mlm }" var="v" varStatus="s" end="4">
                                     <td>
                                         <div class="album_title" id="title_01">
-                                            <a href="#">
-                                                <h1>${v.mu_name }</h1>${v.art_name }
+                                            <a href="${pageContext.request.contextPath}/musicMoreServlet?mu_no=${v.mu_no}">
+                                                <h1>${v.mu_name }</h1>
                                             </a>
+                                            <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=${v.art_no}">${v.art_name }</a>
                                         </div>
                                     </td>
                                 </c:forEach>
@@ -182,13 +178,13 @@
                     </table>
                 </div>
                 <div class="maylike">
-                            <h1 id="ct2">${mem_id }님이좋아할수도있는아티스트</h1>
+                            <h1 id="ct2">${ssLogInfo.mem_id }님이좋아할수도있는아티스트</h1>
                     <table class="mltb">
                         <tr>
                             <c:if test="${not empty ml }">
                                 <c:forEach items="${ml }" var="v" varStatus="s" end="5">
                                     <td>
-                                        <a href="#"> <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="arti_art"></img>
+                                        <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=${v.art_no}"> <img src="${pageContext.request.contextPath}/allfile/${v.f_name }" class="arti_art"></img>
                                         </a>
                                     </td>
                                 </c:forEach>
@@ -199,7 +195,7 @@
                                 <c:forEach items="${ml }" var="v" varStatus="s" end="5">
                                     <td>
                                         <div class="ml_arti">
-                                            <a href="#">${v.art_name }</a>
+                                            <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=${v.art_no}">${v.art_name }</a>
                                         </div>
                                     </td>
                                 </c:forEach>
@@ -208,7 +204,7 @@
                     </table>
                 </div>
                 <div class="latelyls">
-                            <h1 id="ct3">${mem_id }님이최근재생한음악</h1>
+                            <h1 id="ct3">${ssLogInfo.mem_id }님이최근재생한음악</h1>
                     <input type="button" class="more" value="더보기">
                     <table class="ltltb">
                         <tr>
@@ -258,7 +254,7 @@
                                                 <a href="${pageContext.request.contextPath}/musicMoreServlet?mu_no=${v.mu_no}">${v.mu_name }</a>
                                             </div>
                                             <div class="t100_name">
-                                                <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=1">${v.art_name }</a>
+                                                <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=${v.art_no}">${v.art_name }</a>
                                             </div>
                                         </div>
                                     </div>
@@ -280,7 +276,7 @@
                                                 <a href="${pageContext.request.contextPath}/musicMoreServlet?mu_no=${v.mu_no}">${v.mu_name }</a>
                                             </div>
                                             <div class="t100_name">
-                                                <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=1">${v.art_name }</a>
+                                                <a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=${v.art_no}">${v.art_name }</a>
                                             </div>
                                         </div>
                                     </div>

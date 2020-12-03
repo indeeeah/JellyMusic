@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.model.service.MainService;
 import main.model.vo.MainVO;
+import member.model.vo.MemberLoginVO;
 import music.list.main.model.service.MainListSrv;
 import music.list.main.model.vo.MainListVO;
 
@@ -49,7 +50,8 @@ public class MainListCtrl extends HttpServlet {
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//String mem_id = request.getParameter("mem_id");
-		String mem_id = (String)request.getSession().getAttribute("ssLogInfo");
+		MemberLoginVO vo = (MemberLoginVO)request.getSession().getAttribute("ssLogInfo");
+		String mem_id = vo.getMem_id();
 		try {
 			MainListSrv mlservice = new MainListSrv();
 			MainService mservice = new MainService();

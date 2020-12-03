@@ -51,6 +51,7 @@ public class ManagerAllfileUploadCtrl extends HttpServlet {
 
 		ServletContext context = getServletContext(); // 어플리케이션에 대한 정보를 ServletContext 객체가 갖게 됨. (서버의 절대경로를 구하는 데 필요)
 		String saveDir = context.getRealPath("Upload"); // 절대경로를 가져옴
+		
 		System.out.println("절대경로 >> " + saveDir);
 
 		int maxSize =  10 * 1024 * 1024; // 10MB

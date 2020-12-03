@@ -20,7 +20,7 @@ public class MemberPostSrv {
 		try {
 			Context initContext1 = new InitialContext();
 			Context envContext1 = (Context) initContext1.lookup("java:/comp/env");
-			ds = (DataSource) envContext1.lookup("jdbc/myoracle");
+			ds = (DataSource) envContext1.lookup("jdbc/extjelly");
 			conn = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();

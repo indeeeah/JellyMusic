@@ -228,8 +228,7 @@
 	text-indent: .3em;
 }
 
-@
-keyframes drift {from { transform:rotate(0deg);
+@keyframes drift {from { transform:rotate(0deg);
 	
 }
 
@@ -258,14 +257,12 @@ from {
 	bottom: 10px;
 	left: 10px;
 	background-repeat: no-repeat;
-	background-image:
-		url('${pageContext.request.contextPath}/image/001-gems.svg');
+	background-image: url('${pageContext.request.contextPath}/image/001-gems.svg');
 	background-size: 40px;
 }
 
 #tomusic:hover {
-	background-image:
-		url('${pageContext.request.contextPath}/image/gemsgreen.svg');
+	background-image: url('${pageContext.request.contextPath}/image/gemsgreen.svg');
 	background-size: 40px;
 }
 
@@ -280,14 +277,12 @@ from {
 	bottom: 60px;
 	left: 10px;
 	background-repeat: no-repeat;
-	background-image:
-		url('${pageContext.request.contextPath}/image/001-gems.svg');
+	background-image: url('${pageContext.request.contextPath}/image/001-gems.svg');
 	background-size: 40px;
 }
 
 #toartist:hover {
-	background-image:
-		url('${pageContext.request.contextPath}/image/gemsgreen.svg');
+	background-image: url('${pageContext.request.contextPath}/image/gemsgreen.svg');
 	background-size: 40px;
 }
 
@@ -302,14 +297,12 @@ from {
 	bottom: 110px;
 	left: 10px;
 	background-repeat: no-repeat;
-	background-image:
-		url('${pageContext.request.contextPath}/image/001-gems.svg');
+	background-image: url('${pageContext.request.contextPath}/image/001-gems.svg');
 	background-size: 40px;
 }
 
 #toalbum:hover {
-	background-image:
-		url('${pageContext.request.contextPath}/image/gemsgreen.svg');
+	background-image: url('${pageContext.request.contextPath}/image/gemsgreen.svg');
 	background-size: 40px;
 }
 
@@ -354,9 +347,9 @@ from {
                             <c:forEach items="${scm }" var="v" varStatus="s">
                                 <div id="player_info">
                                     <div id="pt1">
-                                        <a href="#" class="album" id="albumTi">${v.al_name} - </a><a href="#" class="arti" id="artiName">${v.art_name}</a>
+                                        <a href="${pageContext.request.contextPath}/albumMoreServlet?al_no=${v.al_no}" class="album" id="albumTi">${v.al_name} - </a><a href="${pageContext.request.contextPath}/artistMoreServlet?art_no=${v.art_no}" class="arti" id="artiName">${v.art_name}</a>
                                     </div>
-                                    <a href="#" class="music" id="musicName">${v.mu_name}</a>
+                                    <a href="${pageContext.request.contextPath}/musicMoreServlet?mu_no=${v.mu_no}" class="music" id="musicName">${v.mu_name}</a>
                                 </div>
                                 <div id="player_bar">
                                 <c:if test="${empty membership }">
@@ -409,15 +402,15 @@ from {
                     </div>
                     <c:if test="${not empty scm }">
                         <c:forEach items="${scm }" var="v" varStatus="s">
-                            <img src="${pageContext.request.contextPath}/image/${v.albumfile}.jpg" id="player_middle"></img>
+                            <img src="${pageContext.request.contextPath}/allfile/${v.albumfile}" id="player_middle"></img>
                         </c:forEach>
                     </c:if>
                     <div id="player_right">
-                        <c:if test="${not empty mprof}">
-                            <c:forEach items="${mprof }" var="v" varStatus="s">
+                        <%-- <c:if test="${not empty mprof}">
+                            <c:forEach items="${mprof }" var="v" varStatus="s"> --%>
                                 <img src="${pageContext.request.contextPath}/image/001-character.svg" id="userpro"></img>
-                            </c:forEach>
-                        </c:if>
+                            <%-- </c:forEach>
+                        </c:if> --%>
                         <div id="heart_con">
                             <c:if test="${not empty heart }">
                                 <c:if test="${heart eq 0}">
@@ -462,7 +455,7 @@ from {
 				</c:if>
 			</c:if>
 		</div>
-		</a>
+		<!-- </a> -->
 		<div id="vol_con">
 			<div class="vol"></div>
 		</div>
@@ -470,13 +463,13 @@ from {
 			<c:forEach items="${scm }" var="v" varStatus="s" end="0">
 				<div id="togo">
 					<div id="tomusic">
-						<a class="togogo" href="">music</a>
+						<a class="togogo" href="${pageContext.request.contextPath}/musicMoreServlet?mu_no=${v.mu_no}">music</a>
 					</div>
 					<div id="toartist">
-						<a class="togogo" href="">artist</a>
+						<a class="togogo" href="${pageContext.request.contextPath}/artistMoreServlet?art_no=${v.art_no}">artist</a>
 					</div>
 					<div id="toalbum">
-						<a class="togogo" href="">album</a>
+						<a class="togogo" href="${pageContext.request.contextPath}/albumMoreServlet?al_no=${v.al_no}">album</a>
 					</div>
 				</div>
 			</c:forEach>

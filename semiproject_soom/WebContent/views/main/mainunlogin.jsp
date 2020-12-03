@@ -49,9 +49,6 @@
                             <img src="${pageContext.request.contextPath}/image/007-settings.svg" class="fix_menu_icon"> <label for="login" class="fix_each_menu">마이페이지</label>
                         </div>
                         <ul>
-                            <li><a href="#">구매내역</a></li>
-                            <li><a href="#">보관함</a></li>
-                            <li><a href="#">계정설정</a></li>
                             <li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
                         </ul>
                         <div class="fix_each">
@@ -60,8 +57,8 @@
                         <ul>
                             <li><a href="#">실시간 차트</a></li>
                             <li><a href="#">하트 차트</a></li>
-                            <li><a href="#">장르</a></li>
-                            <li><a href="#">무드별</a></li>
+                            <li><a href="<%=request.getContextPath()%>/Genre.jsp">장르</a></li>
+                            <li><a href="<%=request.getContextPath()%>/Mood.jsp">무드별</a></li>
                         </ul>
                         <div class="fix_each">
                             <img src="${pageContext.request.contextPath}/image/002-music-1.svg" class="fix_menu_icon"> <label for="myplaylist" class="fix_each_menu">마이플레이리스트</label>
@@ -73,10 +70,9 @@
                             <img src="${pageContext.request.contextPath}/image/008-internet.svg" class="fix_menu_icon"> <label for="help" class="fix_each_menu">고객지원센터</label>
                         </div>
                         <ul>
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">Q&A</a></li>
-                            <li><a href="#">자주하는 질문</a></li>
-                            <li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
+                            <li><a href="${pageContext.request.contextPath}/MemberPostListCtrl">공지사항</a></li>
+                            <li><a href="${pageContext.request.contextPath}/postListServlet">Q&A</a></li>
+                            <li><a href="${pageContext.request.contextPath}/mfreqQues/mfreqQues.jsp">자주하는 질문</a></li>
                         </ul>
                         <div class="fix_each">
                             <img src="${pageContext.request.contextPath}/image/006-star.svg" class="fix_menu_icon"> <label for="membership" class="fix_each_menu">이용권구매</label>
