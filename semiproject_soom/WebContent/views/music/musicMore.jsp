@@ -244,8 +244,15 @@
 						</a>
 					</c:forEach>
 					<div class="option_buy">
-						<a href="<%=request.getContextPath()%>/MembershipServlet"><button
-								class="buy_btn">이용권구매</button></a>
+					<c:if test="${empty mem_id }">
+						<a href="<%=request.getContextPath()%>/memberLoginServlet">	<!-- 로그정보가 없으면 로그인화면으로 -->
+					</c:if>
+					<c:if test="${not empty mem_id && empty membership }">
+						<a href="<%=request.getContextPath()%>/MembershipServlet">	<!-- 로그정보가 비어있지 않으면서 멤버쉽정보가 없으면 이용권구매로 -->
+					</c:if>
+					<c:if test="${not empty mem_id && not empty membership }">
+						<button class="buy_btn">이용권구매</button></a>
+					</c:if>
 					</div>
 					<div class="option_more">
 						<div class="option_like">
@@ -384,6 +391,7 @@
 		<div class="music_more_comments">
 			<div id="ct6">댓글</div>
 			<hr class="up">
+			<c:if test="${not empty mem_id }">
 			<form method="post"
 				action="<%=request.getContextPath()%>/musicCommentWriteCtrl.lo"
 				class="music_comments_write">
@@ -413,6 +421,38 @@
 					</tr>
 				</table>
 			</form>
+			</c:if>
+			<c:if test="${empty mem_id }">
+			<form method="post"
+				action="<%=request.getContextPath()%>/memberLoginServlet"
+				class="music_comments_write">
+				<%
+					String mu_co_no = (request.getParameter("mu_co_no") != null) ? request.getParameter("mu_co_no") : "0";
+				String mu_ref = (request.getParameter("mu_ref") != null) ? request.getParameter("mu_ref") : "0";
+				String mu_step = (request.getParameter("mu_step") != null) ? request.getParameter("mu_step") : "0";
+				String mu_level = (request.getParameter("mu_level") != null) ? request.getParameter("mu_level") : "0";
+				String mu_no = (request.getParameter("mu_no") != null) ? request.getParameter("mu_no") : "0";
+				%>
+				<input type="hidden" name="mu_co_no" value="<%=mu_co_no%>"
+					class="commenthidden"> <input type="hidden" name="mu_ref"
+					value="<%=mu_ref%>" class="commenthidden"> <input
+					type="hidden" name="mu_step" value="<%=mu_step%>"
+					class="commenthidden"> <input type="hidden" name="mu_level"
+					value="<%=mu_level%>" class="commenthidden"> <input
+					type="hidden" name="mem_id" value="${mem_id }"
+					class="commenthidden" id="mem_id"> <input type="hidden"
+					name="mu_no" value="<%=mu_no%>" class="commenthidden">
+				<table class="writeBox">
+					<tr>
+						<td><input type="text" name="mu_cont" id="mu_cont"></td>
+					<tr>
+						<td colspan="2" id="com_forp"><input type="submit"
+							value="글등록" class="cm_btn"> <input type="reset"
+							value="취소" class="cm_btn"></td>
+					</tr>
+				</table>
+			</form>
+			</c:if>
 			<div class="commetsbx_con">
 				<c:forEach items="${clist }" var="v" varStatus="s">
 					<c:set var="sum1" value="${sum1+1 }" />
@@ -422,7 +462,7 @@
 								<p class="commnum">${sum1 }</p>
 							</td>
 							<td width="750px">
-								<p class="commaka">${v.mem_aka }님</p>
+								<p class="commaka">${v.mem_name }님</p>
 							</td>
 							<td rowspan="2" width="50px">
 								<div class="music_comments_likes">
