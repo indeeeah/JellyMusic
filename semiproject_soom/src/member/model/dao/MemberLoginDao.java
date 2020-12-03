@@ -135,9 +135,9 @@ public class MemberLoginDao {
 		return mVoList;
 	}
 	
-	public int updateinfo(String mem_id, String mem_pwd, String mem_name, String mem_birth, String mem_email, String mem_phone) {
+	public int updateinfo(String mem_id, String mem_pwd, String mem_name, String mem_email, String mem_phone) {
 		
-		String sql="update member set mem_pwd=?, mem_name=?, mem_birth=?, mem_email=?, mem_phone=? where mem_id=?";
+		String sql="update member set mem_pwd=?, mem_name=?, mem_email=?, mem_phone=? where mem_id=?";
 		int res = 0;
 		
 		try {
@@ -146,10 +146,9 @@ public class MemberLoginDao {
 			
 			pstmt.setString(1, mem_pwd);
 			pstmt.setString(2, mem_name);
-			pstmt.setString(3, mem_birth);
-			pstmt.setString(4, mem_email);
-			pstmt.setString(5, mem_phone);
-			pstmt.setString(6, mem_id);
+			pstmt.setString(3, mem_email);
+			pstmt.setString(4, mem_phone);
+			pstmt.setString(5, mem_id);
 			res = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
