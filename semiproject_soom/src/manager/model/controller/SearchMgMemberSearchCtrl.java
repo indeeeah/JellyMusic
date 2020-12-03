@@ -50,7 +50,7 @@ public class SearchMgMemberSearchCtrl extends HttpServlet {
 		System.out.println("111111111");
 		try {
 			// 총 글 개수
-			int nCount = SearchMgMemberSrv.getBoardCount();
+			int nCount = searchService.getSearchCount(searchWord);
 			// 페이지 수 초기화
 			String pageNum = request.getParameter("pageNum");
 			if (pageNum == null) {
@@ -87,9 +87,10 @@ public class SearchMgMemberSearchCtrl extends HttpServlet {
 				request.setAttribute("startPage", startPage);
 				request.setAttribute("endPage", endPage);
 				request.setAttribute("PageNum", currentPage);
+				request.setAttribute("searchWord", searchWord);
 			}
 			System.out.println("검색연결");
-			RequestDispatcher disp = request.getRequestDispatcher("/SearchMgMember.jsp");
+			RequestDispatcher disp = request.getRequestDispatcher("/searchMgMemDetail.jsp");
 			disp.forward(request, response);
 		} catch (Exception e) {
 			System.out.println("검색 실패");

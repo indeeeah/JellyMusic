@@ -59,7 +59,8 @@ table{
                 height: 50px;
                border-top: 1px solid white;
                 border-bottom: 1px solid white;
-                
+                text-align:center;
+                line-height:50px;
            }
            tr:nth-child(1) td:nth-child(1){
             border-top: 2px solid white;
@@ -87,9 +88,7 @@ table{
            }
            #subject input{
                width: 99%;
-           }
-           #writer, #subject, #content, #file, #secret_option{
-               padding-left: 30px;
+               height:99%
            }
            #button input{
                 border-radius: 3px;
@@ -112,6 +111,10 @@ table{
             #secretO, #secretX{
                 margin-left:8px;
                 margin-right:15px;
+            }
+            h1{
+            	font-size:2em;
+            	font-weight:bold;
             }
 
 </style>
@@ -244,7 +247,7 @@ table{
 	</header>
 	<div class="main_content">
 		<div class="container">
-			<p>글쓰기</p>
+			<br><br><br><h1>문의글 작성</h1><br><br><br>
 	<form
 		enctype="multipart/form-data"
 		method="post"
@@ -254,14 +257,13 @@ table{
 		<input type="hidden" name="que_ref" value="<%=que_ref %>">
 		<input type="hidden" name="que_step" value="<%=que_step %>">
 		<input type="hidden" name="que_level" value="<%=que_level %>">
-		<input type="hidden" name="writer" value="${mem_id}${mng_id}">
+		<input type="hidden" name="writer" value="${ssLogInfo.mem_id}${mng_id}">
 		<table border="1">
 			<tr>
-				<td colspan = "2"><a href="<%=request.getContextPath() %>/postListServlet">글목록</a></td>
 			</tr>
 			<tr>
 			<td>작성자ID</td>
-			<td id="writer">${mem_id }${mng_id }</td>
+			<td id="writer">${ssLogInfo.mem_id }${mng_id }</td>
 			</tr>
 			<tr>
 			<td>제목</td>

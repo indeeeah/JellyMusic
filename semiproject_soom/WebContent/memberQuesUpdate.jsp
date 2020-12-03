@@ -269,10 +269,10 @@
 	method="post" 
 	action="<%=request.getContextPath()%>/postUpdateServlet.lo" 
 	onsubmit="return updatefrm_submit();">
-	<input type="text" name="que_no" value="<%= que_no%>">
-	<input type="text" name="que_ref" value="<%= que_ref%>">
-	<input type="text" name="que_step" value="<%= que_step%>">
-	<input type="text" name="que_level" value="<%= que_level%>">
+	<input type="hidden" name="que_no" value="<%= que_no%>">
+	<input type="hidden" name="que_ref" value="<%= que_ref%>">
+	<input type="hidden" name="que_step" value="<%= que_step%>">
+	<input type="hidden" name="que_level" value="<%= que_level%>">
 	<table border="1">
 		<tr>
 			<td colspan = "2"><a href="<%=request.getContextPath()%>/postListServlet">글목록</a></td>

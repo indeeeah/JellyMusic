@@ -13,7 +13,26 @@
 <title><c:forEach items="${info }" var="v">${v.al_name }의 검색결과</c:forEach></title>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script> 
 <script src="{% static 'network/functions.js' %}"></script>
-<link href="./reset.css" rel="stylesheet" type="text/css">
+<script src="https://kit.fontawesome.com/3929e16ef5.js"
+	crossorigin="anonymous"></script>
+<script src="{% static 'network/functions.js' %}"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<style>
+#fix_logo_img {
+	background-image:
+		url('${pageContext.request.contextPath}/image/logo.svg');
+	background-size: 45px;
+}
+
+#j_img {
+	background-image:
+		url('${pageContext.request.contextPath}/image/logo.svg');
+	background-size: 100px;
+}
+</style>
 <!-- 초기화 -->
 <style>
 body {
@@ -1497,26 +1516,34 @@ hr {
 </head>
 
 <body>
-<input type="hidden" id="mem_id" value=${v.mem_id }>
-	<nav id="side">
-		<div id="logo">
-			<img src="#" id="logo_img">
+<input type="hidden" id="mem_id" value=${ssLogInfo.mem_id } name="mem_id">
+	<nav id="fix_side">
+		<div id="fix_logo">
+			<div id="fix_logo_img"></div>
+			<a href="mainServlet" id="fix_logo_title">Jelly Music</a>
 		</div>
-		<div id="name">
-			<img src="image/001-user.svg" id="sampleprof"> <a href="#">안녕하세요
-				"누구누구"님</a>
+		<div id="fix_user">
+			<img src="${pageContext.request.contextPath}/image/005-user.svg"
+				id="fix_prof">
+			<c:if test="${not empty himem }">
+				<c:forEach items="${himem }" var="v" varStatus="s">
+					<a href="#">Hello, ${v.mem_id }</a>
+				</c:forEach>
+			</c:if>
 		</div>
-		<div id="main_menu">
+		<div id="fix_side_menu">
 			<div>
-				<input type="radio" name="tab" id="login" class="m1_01"> <input
-					type="radio" name="tab" id="song" class="m1_01"> <input
-					type="radio" name="tab" id="myplaylist" class="m1_01"> <input
-					type="radio" name="tab" id="recommend" class="m1_01"> <input
-					type="radio" name="tab" id="help" class="m1_01"> <input
-					type="radio" name="tab" id="membership" class="m1_01">
-				<div class="each">
-					<img src="image/001-play.svg" class="sampleimg"> <label
-						for="login" class="m1">마이페이지</label>
+				<input type="radio" name="fix_drp" id="login"> <input
+					type="radio" name="fix_drp" id="song"> <input type="radio"
+					name="fix_drp" id="myplaylist"> <input type="radio"
+					name="fix_drp" id="recommend"> <input type="radio"
+					name="fix_drp" id="help"> <input type="radio"
+					name="fix_drp" id="membership">
+				<div class="fix_each">
+					<img
+						src="${pageContext.request.contextPath}/image/007-settings.svg"
+						class="fix_menu_icon"> <label for="login"
+						class="fix_each_menu">마이페이지</label>
 				</div>
 				<ul>
 					<li><a href="#">구매내역</a></li>
@@ -1524,9 +1551,11 @@ hr {
 					<li><a href="#">계정설정</a></li>
 					<li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
-				<div class="each">
-					<img src="image/001-play.svg" class="sampleimg"> <label
-						for="song" class="m1">노래</label>
+				<div class="fix_each">
+					<img
+						src="${pageContext.request.contextPath}/image/003-play-button.svg"
+						class="fix_menu_icon"> <label for="song"
+						class="fix_each_menu" onclick="location.href='mainListCtrl.do';">노래</label>
 				</div>
 				<ul>
 					<li><a href="#">실시간 차트</a></li>
@@ -1534,173 +1563,134 @@ hr {
 					<li><a href="#">장르</a></li>
 					<li><a href="#">무드별</a></li>
 				</ul>
-				<div class="each">
-					<img src="image/001-play.svg" class="sampleimg"> <label
-						for="myplaylist" class="m1">마이플레이리스트</label>
+				<div class="fix_each">
+					<img src="${pageContext.request.contextPath}/image/002-music-1.svg"
+						class="fix_menu_icon"> <label for="myplaylist"
+						class="fix_each_menu">마이플레이리스트</label>
 				</div>
-				<div class="each">
-					<img src="image/001-play.svg" class="sampleimg"> <label
-						for="recommend" class="m1">나만의 추천</label>
+				<div class="fix_each">
+					<img src="${pageContext.request.contextPath}/image/001-music.svg"
+						class="fix_menu_icon"> <label for="recommend"
+						class="fix_each_menu">나만의 추천</label>
 				</div>
-				<div class="each">
-					<img src="image/001-play.svg" class="sampleimg"> <label
-						for="help" class="m1">고객지원센터</label>
+				<div class="fix_each">
+					<img
+						src="${pageContext.request.contextPath}/image/008-internet.svg"
+						class="fix_menu_icon"> <label for="help"
+						class="fix_each_menu">고객지원센터</label>
 				</div>
 				<ul>
 					<li><a href="#">공지사항</a></li>
 					<li><a href="#">Q&A</a></li>
 					<li><a href="#">자주하는 질문</a></li>
-					<li><a href="${pageContext.request.contextPath}/memberLogoutServlet">로그아웃</a></li>
 				</ul>
-				<div class="each">
-					<img src="image/001-play.svg" class="sampleimg"> <label
-						for="membership" class="m1">이용권구매</label>
+				<div class="fix_each">
+					<img src="${pageContext.request.contextPath}/image/006-star.svg"
+						class="fix_menu_icon"> <label for="membership"
+						class="fix_each_menu">이용권구매</label>
 				</div>
 			</div>
 		</div>
-		<div class="page">
-			<button class="player-btn">Player</button>
+		<div class="fix_btn">
+			<c:if test="${not empty scm }">
+				<c:forEach items="${scm }" var="v" varStatus="s" end="0">
+					<input type="hidden" name="mu_no" value=${v.mu_no }>
+					<input type="hidden" id="mem_id" name="mem_id" value=${v.mem_id }>
+					<button class="fix_player_btn"
+						onclick="window.open('<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}','','width=1200,height=720')">Player</button>
+				</c:forEach>
+			</c:if>
 		</div>
-	</nav>
-	<header class="main_header">
-		<input type="text" class="searchbx">
-		<div class="search"></div>
-		<div class="remenu">
-			<div class="realtime">
-				<div class='masthead-image' id='master-container'>
-					<div id='master-container-scroller'>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>1. 블랙핑크
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>2. 트와이스
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>3. 소녀시대
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>4. 원더걸스
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>5. 카라
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>6. SES
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>7. 블랙핑크
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>8. 블랙핑크
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>9. 블랙핑크
-								<div class="tri"></div>
-							</a>
-						</div>
-						<div class='master-container-scroller_item'>
-							<a class='cta-link' href='#'>10. 블랙핑크
-								<div class="tri"></div>
-							</a>
-						</div>
+		<div class="modal" tabindex="-1" role="dialog" id="sendReport">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">신고 작성</h5>
+
+					</div>
+					<div class="modal-body">
+						<p>신고사유 선택</p>
+						<form id="reportform" class="sendReport">
+							<div class="custom-control custom-radio">
+								<input type="radio" id="customRadio1" name="reportReason"
+									class="custom-control-input" value="F"> <label
+									class="custom-control-label" for="customRadio1"
+									style="font-size: 13px; padding-bottom: 6px;">욕설</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" id="customRadio2" name="reportReason"
+									class="custom-control-input" value="A"> <label
+									class="custom-control-label" for="customRadio2"
+									style="font-size: 13px; padding-bottom: 6px;">음란물</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" id="customRadio3" name="reportReason"
+									class="custom-control-input" value="R"> <label
+									class="custom-control-label" for="customRadio3"
+									style="font-size: 13px; padding-bottom: 6px;">허위사실</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" id="customRadio4" name="reportReason"
+									class="custom-control-input" value="E"> <label
+									class="custom-control-label" for="customRadio4"
+									style="font-size: 13px;">기타</label> <input type="text"
+									class="form-control" id="reportContent" name="reportContent"
+									placeholder="기타 내용을 입력하세요." style="font-size: 13px;" />
+							</div>
+							<input type="hidden" id="mem_id_forre" name="mem_id" value="">
+							<input type="hidden" id="mu_co_no" name="mu_co_no" value="">
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal" onclick="closeModal('sendReport');"
+							id="endReport">Close</button>
+						<button type="button" class="btn btn-primary" id="addReport">send
+							report</button>
 					</div>
 				</div>
 			</div>
 		</div>
+	</nav>
+	<header class="fix_header">
+		<input type="text" class="fix_searchbx">
+		<div class="fix_search"></div>
+		<div class="fix_realtime">
+			<div class="fix_rt_div">
+				<div id='fix_m_scroller'>
+					<c:if test="${not empty searlist}">
+						<c:forEach items="${searlist }" var="vo" varStatus="s">
+							<c:set var="sum" value="${sum+1 }" />
+							<div class='fix_item'>
+								<a class='rt_link' href='#'>${sum }. ${vo.sear_word }
+									<div class="tri"></div>
+								</a>
+							</div>
+						</c:forEach>
+					</c:if>
+				</div>
+			</div>
+		</div>
 		<table id="rtdrop">
-			<tr>
-				<td width="10%">1.</td>
-				<td width="80%"><a href="#">블랙핑크ㅇ</a></td>
-				<td width="10%">
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>2.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>3.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>4.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>5.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>6.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>7.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>8.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>9.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>10.</td>
-				<td><a href="#">블랙핑크</a></td>
-				<td>
-					<div class="tri"></div>
-				</td>
-			</tr>
+			<c:if test="${not empty searlist}">
+				<c:forEach items="${searlist }" var="vo" varStatus="s">
+					<c:set var="sum2" value="${sum2+1 }" />
+					<tr>
+						<td width="10%">${sum2 }.</td>
+						<td width="80%"><a href="#">${vo.sear_word }</a></td>
+						<td width="10%">
+							<div class="tri"></div>
+						</td>
+					</tr>
+				</c:forEach>
+			</c:if>
 		</table>
 	</header>
 	<div class="content">
 		<div class="container">
 			<div class="al_more_info">
 				<div class="al_more_info_img">
-					<img src="image/bts-dynamite-cover.jpg">
+					<img src="${pageContext.request.contextPath}/allfile/${v.f_name }">
 				</div>
 				<div class="al_more_info_intro">
 					<c:if test="${not empty info }">
@@ -1884,7 +1874,7 @@ hr {
 							<input type="hidden" name="al_step" value="<%=al_step%>" class="commenthidden"> 
 							<input type="hidden" name="al_level" value="<%=al_level%>" class="commenthidden">
 							<input type="hidden" name="al_no" value="<%=al_no%>" class="commenthidden">
-							<input type="hidden" name="mem_id" value="${idLog}" class="commenthidden">
+							<input type="hidden" name="mem_id" value="${ssLogInfo.mem_id}" class="commenthidden">
 							<table border="1">
 								<tr>
 									<td>글쓰기</td>
@@ -1894,7 +1884,7 @@ hr {
 								<tr>
 									<td colspan="2">
 										<input type="submit" value="글등록">
-										<input type="reset" value="${idLog}"> 
+										<input type="reset" value="취소"> 
 									</td>
 								</tr>
 							</table>
@@ -1927,7 +1917,7 @@ hr {
 										<div class="album_comments_hates">
 											<a>hates </a> ${v.al_hates}
 										</div>
-										<c:if test ="${idLog eq v.mem_id }">
+										<c:if test ="${ssLogInfo.mem_id eq v.mem_id }">
 										<div class="album_comments_delete">
 											<input type="button" onclick="window.location='albumCommentDeleteCtrl?al_co_no=${v.al_co_no}&al_no=${v.al_no }'" value="삭제">
 										</div>

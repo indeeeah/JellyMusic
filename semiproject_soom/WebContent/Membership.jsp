@@ -1,5 +1,6 @@
 <link href="${pageContext.request.contextPath}/css/reset.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/css/main_login.css" rel="stylesheet" type="text/css">
+<% String ctxPath = request.getContextPath(); %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -1192,7 +1193,92 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
 	background: rgb(20, 23, 38);
 }
 </style>
-            
+<style>  
+/*모달 시작*/
+/* The Modal (background) */
+.modal {
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   padding-top: 100px; /* Location of the box */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgb(0, 0, 0); /* Fallback color */
+   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+   position: relative;
+   background-color: rgb(20, 23, 38);
+   margin: auto;
+   padding: 0;
+   width: 70%;
+   height: 150px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+      rgba(0, 0, 0, 0.19);
+   -webkit-animation-name: animatetop;
+   -webkit-animation-duration: 1.5s;
+   animation-name: animatetop;
+   animation-duration: 1.5s;
+   text-align: center;
+   border-radius: 30px;
+   padding: 20px;
+}
+
+/* Add Animation */
+@
+-webkit-keyframes animatetop {from { top:-300px;
+   opacity: 0
+}
+
+to {
+   top: 0;
+   opacity: 1
+}
+
+}
+@
+keyframes animatetop {from { top:-300px;
+   opacity: 0
+}
+
+to {
+   top: 0;
+   opacity: 1
+}
+
+}
+
+/* The Close Button */
+.close {
+   color: rgb(74, 254, 0);
+   float: right;
+   padding-top: 10px;
+   font-size: 20px;
+   font-weight: bold;
+   font-size: 20px;
+}
+
+.close:hover, .close:focus {
+   color: #4D4D4D;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.modal-header {
+   background-color: rgb(20, 23, 38);
+   padding: 2px 16px;
+   color: white;
+   height: 150px;
+   border-radius: 30px;
+}
+
+/*모달 끝*/
+</style> 
             <style>
                 .main_content {
                     background: linear-gradient(to right, rgba(22, 25, 41, 0) 30%, rgba(22, 25, 41, 0.25) 55%, rgba(22, 25, 41, 0.5) 70%, rgba(22, 25, 41, 0.75) 75%, rgba(22, 25, 41, 1) 100%),
@@ -1324,7 +1410,8 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
 		</div>
 		<div class="mms_section">
 			<ul>
-				<c:if test="${not empty membership }">
+				
+                <c:if test="${not empty membership }">
 					<c:forEach items="${membership }" var="v" varStatus="s">
 						<c:choose>
 							<c:when test="${v.ms_no eq '2'}">
@@ -1335,10 +1422,55 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
 												이용권 이용불가)</em></small>
 									</p>
 									<div class="btns">
-										<a
+										<%-- <a
 											href="${pageContext.request.contextPath}/Membership01.jsp?no=${v.ms_no}&type=${v.ms_type}"
-											class="mms_buy_btn">구매하기</a>
+											class="mms_buy_btn">구매하기</a> --%>
+											<button type="button" class="mms_buy_btn" id="ms_no" value="${v.ms_no }">구매하기</button>
 									</div></li>
+								<div id="myModal" class="modal">
+                           <!-- Modal content -->
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <span class="close">&times;</span>
+                                 <div id="content" class="content">
+                                    <table class="content_tbl" align="center">
+                                       <tr>
+                                          <th>회원ID</th>
+                                          <td><input type="text" size="40" maxlength="10"
+                                             name="u_id" id="u_id" onkeyup="spaceChk(this);"
+                                             onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>이름</th>
+                                          <td><input type="text" size="40" name="name"
+                                             id="name" onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>비밀번호</th>
+                                          <td><input type="password" size="40" name="pwd"
+                                             id="pwd" onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>전화번호</th>
+                                          <td><input type="text" size="40" name="tel" id="tel"
+                                             onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <td colspan="2" style="text-align: center">
+                                             <form id="frm">
+                                                <input type=hidden name="ms_no" id="ms_no"
+                                                   value="<%=request.getParameter("no")%>"> <input
+                                                   id="ms_submit" type="button" value="구매완료"
+                                                   style="margin-top: 10px;" onclick="goSubmit();">
+                                             </form>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+
+                           </div>
+                        </div>
 							</c:when>
 							<c:when test="${v.ms_no eq '3'}">
 								<li class="mms_item"><strong class="mms_title">Jelly
@@ -1352,6 +1484,49 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
 											href="${pageContext.request.contextPath}/Membership01.jsp?no=${v.ms_no}&type=${v.ms_type}"
 											class="mms_buy_btn">구매하기</a>
 									</div></li>
+								<div id="myModal" class="modal">
+                           <!-- Modal content -->
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <span class="close">&times;</span>
+                                 <div id="content" class="content">
+                                    <table class="content_tbl" align="center">
+                                       <tr>
+                                          <th>회원ID</th>
+                                          <td><input type="text" size="40" maxlength="10"
+                                             name="u_id" id="u_id" onkeyup="spaceChk(this);"
+                                             onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>이름</th>
+                                          <td><input type="text" size="40" name="name"
+                                             id="name" onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>비밀번호</th>
+                                          <td><input type="password" size="40" name="pwd"
+                                             id="pwd" onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>전화번호</th>
+                                          <td><input type="text" size="40" name="tel" id="tel"
+                                             onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <td colspan="2" style="text-align: center">
+                                             <form id="frm">
+                                                <input type=hidden name="ms_no" id="ms_no"
+                                                   value="<%=request.getParameter("no")%>"> <input
+                                                   id="ms_submit" type="button" value="구매완료"
+                                                   style="margin-top: 10px;" onclick="goSubmit();">
+                                             </form>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
 							</c:when>
 							<c:when test="${v.ms_no eq '4'}">
 								<li class="mms_item"><strong class="mms_title">Jelly
@@ -1365,6 +1540,49 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
 											href="${pageContext.request.contextPath}/Membership01.jsp?no=${v.ms_no}&type=${v.ms_type}"
 											class="mms_buy_btn">구매하기</a>
 									</div></li>
+								<div id="myModal" class="modal">
+                           <!-- Modal content -->
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <span class="close">&times;</span>
+                                 <div id="content" class="content">
+                                    <table class="content_tbl" align="center">
+                                       <tr>
+                                          <th>회원ID</th>
+                                          <td><input type="text" size="40" maxlength="10"
+                                             name="u_id" id="u_id" onkeyup="spaceChk(this);"
+                                             onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>이름</th>
+                                          <td><input type="text" size="40" name="name"
+                                             id="name" onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>비밀번호</th>
+                                          <td><input type="password" size="40" name="pwd"
+                                             id="pwd" onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>전화번호</th>
+                                          <td><input type="text" size="40" name="tel" id="tel"
+                                             onkeyup="spaceChk(this);" onchange="spaceChk"></td>
+                                       </tr>
+                                       <tr>
+                                          <td colspan="2" style="text-align: center">
+                                             <form id="frm">
+                                                <input type=hidden name="ms_no" id="ms_no"
+                                                   value="<%=request.getParameter("no")%>"> <input
+                                                   id="ms_submit" type="button" value="구매완료"
+                                                   style="margin-top: 10px;" onclick="goSubmit();">
+                                             </form>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
 							</c:when>
 						</c:choose>
 					</c:forEach>
@@ -1541,6 +1759,57 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
                     });
                 });
             </script>
+             <script type="text/javascript">
+      /*모달 시작*/
+      // Get the modal
+      var modal = document.getElementById("myModal");
+      // Get the button that opens the modal
+      var btn = document.getElementsByClassName("mms_buy_btn");
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+      for(var i = 0; i < btn.length; i++) {
+         btn[i].onclick = function() {
+            modal.style.display = "block";
+      }}
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+         modal.style.display = "none";
+      }
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+         if (event.target == modal) {
+            modal.style.display = "none";
+         }
+      };
+      /*모달 끝*/
+      function goSubmit(){
+         console.log( $("#ms_no").val() );
+         console.log('<%=request.getParameter("no")%>');
+         var no = $("#ms_no").val();
+         if($("#ms_no").val() == '2') {
+            $.ajax({
+               url: '<%=ctxPath%>/StreamingServlet',
+               data: { ms_no : no},
+               success: function(result) {
+                  alert(result);    
+               }         
+            });
+         }
+         else if($("#ms_no").val() == '3')  {
+            $.ajax({
+               url: '<%=ctxPath%>/BuypackageServlet',
+               data: { ms_no : no},
+               type : '<%=request.getParameter("no")%>',
+               success : function(result) {
+                  alert(result);
+               }
+            });
+         }
+      }
+      ${pageContext.request.contextPath}/Membership01.jsp?no=${v.ms_no}&type=${v.ms_type}
+      </script>
         </body>
 
         </html>

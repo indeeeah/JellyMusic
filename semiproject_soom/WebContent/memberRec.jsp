@@ -2,35 +2,20 @@
 <link href="${pageContext.request.contextPath}/css/main_login.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script src="http://code.jquery.com/jquery-latest.js"></script>
-            <title>Jelly Music</title>
-            <style>
-                .main_content {
-                    background: linear-gradient(to right, rgba(22, 25, 41, 0) 30%, rgba(22, 25, 41, 0.25) 55%, rgba(22, 25, 41, 0.5) 70%, rgba(22, 25, 41, 0.75) 75%, rgba(22, 25, 41, 1) 100%),
-                    linear-gradient(to bottom, rgba(22, 25, 41, 0) 80%, rgba(22, 25, 41, 0.25) 85%, rgba(22, 25, 41, 0.5) 90%, rgba(22, 25, 41, 0.75) 95%, rgba(22, 25, 41, 1) 100%),
-                    url('${pageContext.request.contextPath}/image/hostile-886034.jpg');
-                    background-size: calc(100% - 259px);
-                    background-repeat: no-repeat;
-                }
-                
-                #fix_logo_img {
-                    background-image: url('${pageContext.request.contextPath}/image/logo.svg');
-                    background-size: 45px;
-                }
-                
-                #j_img {
-                    background-image: url('${pageContext.request.contextPath}/image/logo.svg');
-                    background-size: 100px;
-                }
-            </style>
+<%
+	String ctxPath = request.getContextPath();
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MemberRec</title>
+<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap')
+	;
+</style>
             <style>
             @charset "UTF-8";
 
@@ -493,6 +478,7 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
 }
 
 
+
 /*fix_footer*/
 
 #fix_footer {
@@ -754,10 +740,8 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
     color: rgb(244, 244, 244);
     width: 1200px;
     height: 100%;
-    left: 400px;
-    bottom: -150px;
+    left: 379px;
 }
-
 
 .for_you>#ct1 {
     position: absolute;
@@ -1091,240 +1075,87 @@ nav>#fix_side_menu>div>input:nth-of-type(5):checked~.fix_each:nth-of-type(5)+ul 
     background-color: rgb(244, 244, 244);
 }
 
-.mood {
-    position: relative;
-    color: rgb(244, 244, 244);
-    width: 1200px;
-    height: 375px;
-    left: 379px;
-}
-
-.mood>#ct6 {
-    position: absolute;
-    top: 70px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 35px;
-}
-
-.mood>.more {
-    position: absolute;
-    top: 80px;
-    right: 0;
-}
-
-.mood>.up {
-    position: absolute;
-    top: 110px;
-    width: 100%;
-    border: none;
-    height: 0.5px;
-    background-color: rgb(244, 244, 244);
-}
-
-.mood>.moodtbl>tbody {
-    position: absolute;
-    width: 100%;
-    top: 160px;
-}
-
-.mood_l {
-    width: 262.5px;
-    height: 150px;
-    background-color: aliceblue;
-    border-radius: 10px;
-}
-
-.moodtbl>tbody>tr>td {
-    padding-right: 50px;
-}
-
-.moodtbl>tbody>tr>td:nth-of-type(4) {
-    padding-right: 0px;
-}
-
-.mood>.down {
-    position: absolute;
-    top: 366px;
-    width: 100%;
-    border: none;
-    height: 0.5px;
-    background-color: rgb(244, 244, 244);
-}
-
-.mood_l_title {
-    padding-top: 10px;
-}
-
-.genre {
-    position: relative;
-    color: rgb(244, 244, 244);
-    width: 1200px;
-    height: 100%;
-    left: 379px;
-}
-
-.genre>#ct7 {
-    position: absolute;
-    top: 70px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 35px;
-}
-
-.genre_l {
-    width: 220px;
-    height: 70px;
-    background-color: rgb(20, 23, 38);
-    border-radius: 10px;
-    color: rgb(244, 244, 244);
-    box-sizing: border-box;
-    border: 1px solid rgb(244, 244, 244);
-    text-align: center;
-    line-height: 70px;
-}
-
-.genre_l:hover {
-    color: rgb(74, 254, 0);
-    border: 1px solid rgb(74, 254, 0);
-}
-
-.genre>.up {
-    position: absolute;
-    top: 110px;
-    width: 100%;
-    border: none;
-    height: 0.5px;
-    background-color: rgb(244, 244, 244);
-}
-
-.genretbl>tbody {
-    position: absolute;
-    width: 100%;
-    top: 160px;
-}
-
-.genretbl>tbody>tr>td {
-    padding-right: 25px;
-}
-
-.genretbl>tbody>tr>td:nth-of-type(5) {
-    padding-right: 0px;
-}
-
-.genretbl>tbody>tr>td {
-    padding-bottom: 15px;
-}
-
-.genre>.down {
-    position: absolute;
-    top: 601px;
-    width: 100%;
-    border: none;
-    height: 0.5px;
-    background-color: rgb(244, 244, 244);
-}
-
-#MO00000001mood {
-    background-color: #20bf55;
-    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
-}
-
-#MO00000002mood {
-    background-color: #0cbaba;
-    background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
-}
-
-#MO00000003mood {
-    background-color: #eec0c6;
-    background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
-}
-
-#MO00000004mood {
-    background-color: #7f5a83;
-    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
-}
-
-#MO00000005mood {
-    background-color: #9fa4c4;
-    background-image: linear-gradient(315deg, #9fa4c4 0%, #9e768f 74%);
-}
-
-#MO00000006mood {
-    background-color: #e9bcb7;
-    background-image: linear-gradient(315deg, #e9bcb7 0%, #29524a 74%);
-}
-
-#MO00000007mood {
-    background-color: #abe9cd;
-    background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
-}
-
-#MO00000008mood {
-    background-color: #d5adc8;
-    background-image: linear-gradient(315deg, #d5adc8 0%, #ff8489 74%);
-}
-
-#MO00000009mood {
-    background-color: #7f53ac;
-    background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
-}
-
-#MO00000010mood {
-    background-color: #aff6cf;
-    background-image: linear-gradient(315deg, #aff6cf 0%, #9f98e8 74%);
-}
-#btnJoin{
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  font-size: 20px;
-  padding: 5px 15px;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: inline-block;
-  margin: 10px 30px;
-  }
-  #mem_pwd{
- padding: 10px 30px;
-margin: 10px 30px;
-box-sizing: border-box;
-	border: 1px solid rgb(74, 254, 0);
-	border-radius: 6px;
-}
-#logo{
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  left: 100%;
-  transform: translate(-50%, -50%);
-  padding-top: 50px;
-  
-}
-.mem_up{
-   position: absolute;
-    top: 110px;
-    left: 400px;
-    width: 100%;
-    border: none;
-    height: 0.5px;
-    background-color: rgb(244, 244, 244);
-}
-.mem_down{
-    top: 510px;
-    width: 100%;
-    border: none;
-    height: 0.5px;
-    background-color: rgb(244, 244, 244);
-}
-#delete{
-padding-bottom: 130px;
-}
-
             </style>
-        </head>
+            <style>
+                .main_content {
+                    background: linear-gradient(to right, rgba(22, 25, 41, 0) 30%, rgba(22, 25, 41, 0.25) 55%, rgba(22, 25, 41, 0.5) 70%, rgba(22, 25, 41, 0.75) 75%, rgba(22, 25, 41, 1) 100%),
+                    linear-gradient(to bottom, rgba(22, 25, 41, 0) 80%, rgba(22, 25, 41, 0.25) 85%, rgba(22, 25, 41, 0.5) 90%, rgba(22, 25, 41, 0.75) 95%, rgba(22, 25, 41, 1) 100%),
+                    url('${pageContext.request.contextPath}/image/hostile-886034.jpg');
+                    background-size: calc(100% - 259px);
+                    background-repeat: no-repeat;
+                }
+                
+                #fix_logo_img {
+                    background-image: url('${pageContext.request.contextPath}/image/logo.svg');
+                    background-size: 45px;
+                }
+                
+                #j_img {
+                    background-image: url('${pageContext.request.contextPath}/image/logo.svg');
+                    background-size: 100px;
+                }
+            </style>
+    <!--list-->
+    <style>
+ .list_container{
+            position: relative;
+            padding-bottom: 522px;
+            padding-left: 255px;
+            height: 10000px;
+        }
+        .list_content{
+            position: relative;
+            z-index: 10;
+            display: block;
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            padding: 90px 0 88px;
+        }
+        .list_title{
+            margin: 61px 0 25px;
+            font-size: 30px;
+            line-height: 36px;
+            color: white;
 
-        <body>
-      
-       
+        }
+        .list_section{
+            position: relative;
+            padding: 18px 0 39px;
+        }
+        .station_wrap{
+            margin-right: -11px;
+        }
+        .list_item{
+            float: left;
+            width: 25%;
+             list-style: none;
+         
+        }
+        .thumb_area{
+            position: relative;
+            padding-top: 100%;
+        }
+        .link{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .lsit_item_img{
+            width: 216px;
+            height: 216px;
+        }
+        .MR_title{
+        padding-top:10px;
+        font-size:14px;
+        line-height:100px;
+        color:white;
+        }
+    </style>
+</head>
+<body>
             <input type="hidden" id="mem_id" value=${mem_id } name="mem_id">
             <nav id="fix_side">
                 <div id="fix_logo">
@@ -1335,7 +1166,7 @@ padding-bottom: 130px;
                     <img src="${pageContext.request.contextPath}/image/005-user.svg" id="fix_prof">
                     <c:if test="${not empty himem }">
                         <c:forEach items="${himem }" var="v" varStatus="s">
-                            <a href="#">Hello, ${v.mem_id}</a>
+                            <a href="#">Hello, ${v.mem_aka }</a>
                         </c:forEach>
                     </c:if>
                 </div>
@@ -1425,39 +1256,161 @@ padding-bottom: 130px;
                     </c:if>
                 </table>
             </header>
-            <div class="main_content">
-          
-		<div id="logo">
-			 <img src="./image/K-440.jpg" style="
-			 width: 750px;
-			 height: 450px;
-			 
-			" >
-		</div>	
-		 <hr class="mem_up">
-		
-                <div class="for_you"><h1 class="no_title">회원탈퇴</h1>
-                      <form name="registerdrop" action="<%=request.getContextPath() %>/MemberWithdrawsSrv" method="post">
-                <div id="delete">
-                    <h3 class="join_title"><label for="mem_pwd">비밀번호를 입력해주세요</label></h3>
-                    <span class="box int_pass">
-                        <input type="password" id="mem_pwd" name="mem_pwd" class="int" maxlength="20">
-                        
-                  <div class="btn_area">
-                    <button type="submit" id="btnJoin">
-                        <span>탈퇴하기</span>
-                    </button>
-                
+    <div id="lsit_container" class="list_container">
+        <div id="list_content" class="list_content">
+            <h1 class="list_title">나만의 추천 스테이션</h1>
+            <div class="list_section">
+                <div class="station_wrap">
+            <ul>
+               <li class="list_item">
+                   <div>
+                       <div class="thumb_area">
+                           <a href="#" class="link">
+                               <img src="#" class="lsit_item_img">
+                           </a>
+                       </div>
+                       <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                   </div>
+               </li> 
+               <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
                 </div>
-
-                     
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
                 </div>
-                 <hr class="mem_down">
-                </form>
-                  
-                    </table>
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
                 </div>
-                <footer id="fix_footer">
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                </div>
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                </div>
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                </div>
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                </div>
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                </div>
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                </div>
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                </div>
+            </li> 
+            <li class="list_item">
+                <div>
+                    <div class="thumb_area">
+                        <a href="#" class="link">
+                            <img src="#" class="lsit_item_img">
+                        </a>
+                    </div>
+                          <div class="MR_info">
+                       <a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no}" class="MR_title">{v.mu_name}</a>
+                       </div>
+                </div>
+            </li> 
+            </ul>
+        </div>
+            </div>
+    </div>
+   <footer id="fix_footer">
                     <hr id="fix_fline">
                     <div id="fix_ft">
                         <div id="fix_copy" class="fix_fc">Copyright ⓒ 2020 Jelly. All rights reserved.</div>
@@ -1468,7 +1421,7 @@ padding-bottom: 130px;
                         <div id="fix_info" class="fix_fc">제작자 : 김경태 김수민 곽은지 김지용 장재혁</div>
                     </div>
                 </footer>
-            </div>
+            
             <script>
                 $(".tri_con").click(function() {
                     var showTvalue = $(this).next().val();
@@ -1628,6 +1581,4 @@ padding-bottom: 130px;
             </script>
         </body>
 
-
-
-</html>
+        </html>

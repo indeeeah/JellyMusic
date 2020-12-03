@@ -16,13 +16,9 @@ public class MoodMoreDao {
 
 	public List<MoodMoreVO> getMoodMoreAll(Connection conn){
 		ArrayList<MoodMoreVO> list = null;
-		String sql ="select * from (select ROWNUM rnum, mu.* from " + 
-				"    (select * from album al" + 
-				"        left outer join music m on m.al_no = al.al_no" + 
-				"        left outer join artist art on m.art_no = art.art_no" + 
-				"        where art.art_no=? order by mu_every_play desc) " + 
-				"    mu) " + 
-				"where rnum >= 1 and rnum <= 100";
+		String sql =" select * from (select rownum rnum, m.* from " 
+              + "(select mo_no, mo_name, f_name from mood join allfile on mood.f_no=allfile.f_no order by mo_no asc) m ) "
+          + "where rnum between 1 and 12 order by dbms_random.value";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

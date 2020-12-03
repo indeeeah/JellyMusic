@@ -64,7 +64,7 @@ public class MemberRegisterSrv extends HttpServlet {
 			RequestDispatcher disp = request.getRequestDispatcher("../memberRegister.jsp");
 			disp.forward(request, response);
 		} else {
-			if (!mem_id.equals("") && !mem_pwd.equals("") && !mem_name.equals("") && !mem_email.equals("") && !mem_birth.equals("") && !mem_phone.equals("") && !mem_gender.equals("")) {
+			if (!mem_id.equals("") && !mem_pwd.equals("") && !mem_name.equals("") && !mem_email.equals("") && !mem_phone.equals("") && !mem_gender.equals("")) {
 				MemberLoginVO mvo = new MemberLoginVO();
 				mvo.setMem_birth(mem_birth);
 				mvo.setMem_gender(Integer.parseInt(mem_gender));
@@ -77,8 +77,9 @@ public class MemberRegisterSrv extends HttpServlet {
 					MemberLoginDao dao = new MemberLoginDao();
 					int result = dao.MemberRegisterSrv(mvo);
 					if (result == 1) {
-						writer.println("<script>alert('다음 단계를 수행해주세요!');location.href='member/controller/firstArtistCtrl.do';</script>");
+						writer.println("<script>alert('다음 단계를 수행해주세요!');location.href='firstArtistCtrl.do';</script>");
 						writer.close();
+						request.setAttribute("mem_id", mem_id);
 //			
 					} else {
 						RequestDispatcher disp1 = request.getRequestDispatcher("../error.jsp");

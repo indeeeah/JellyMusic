@@ -291,15 +291,32 @@ table tr:nth-child(2) td {
 									<td><c:if test="${v.que_level eq 2}">
                  							&nbsp;&nbsp;->
                							</c:if> 
-               							<c:set var="O" value="O" /> <c:if
+               							<c:set var="O" value="O" />
+               							<c:set var="writer" value="${v.mem_id }" />
+               						<c:choose>
+               							<c:when test="${v.que_secret ne O }">
+               								<a class="que_cnt" href="<%=ctxPath %>/postContentServlet?que_no=${v.que_no}&pageNum=<%=currentPage%>">${v.que_name }</a>
+               							</c:when>
+               							<c:when test="${v.que_secret eq O && writer eq ssLogInfo.mem_id}">
+               								<a class="que_cnt" href="<%=ctxPath %>/postContentServlet?que_no=${v.que_no}&pageNum=<%=currentPage%>">${v.que_name }</a>
+               							</c:when>
+               							<c:when test="${not empty mng_id}">
+               								<a class="que_cnt" href="<%=ctxPath %>/postContentServlet?que_no=${v.que_no}&pageNum=<%=currentPage%>">${v.que_name }</a>
+               							</c:when>
+               							<c:otherwise>
+               								(secret)
+               							</c:otherwise>
+               						</c:choose>
+               						</td>
+										<c:set var="writer1" value="${ssLogInfo.mem_id }" /> 
+<%--                							<c:set var="O" value="O" /> <c:if
 											test="${v.que_secret ne O || not empty mng_id || v.mem_id eq writer1}">
 										</c:if> 
 											<a class="que_cnt"
 												href="<%=ctxPath %>/postContentServlet?que_no=${v.que_no}&pageNum=<%=currentPage%>">${v.que_name }</a>
-										<c:set var="writer1" value="${idLog }" /> <c:if
-											test="${v.que_secret eq O && v.mem_id ne writer2 }">
+										<c:if test="${v.que_secret eq O && v.mem_id ne writer2 }">
 							                  (secret)
-							             </c:if></td>
+							             </c:if> --%>
 									<td class="writer">${v.mem_id }</td>
 									<td class="count">${v.que_cnt }</td>
 									<td class="date">${v.que_date }</td>

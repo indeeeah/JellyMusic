@@ -45,7 +45,7 @@ public class ManagerPostUpdateCtrl extends HttpServlet {
 		ManagerPostSrv postService = new ManagerPostSrv();
 		String p_name = request.getParameter("p_name");
 		String p_content = request.getParameter("p_content");
-		int p_no = Integer.parseInt(request.getParameter("p_no"));
+		String p_no = request.getParameter("p_no");
 		try {
 			int result = postService.postUpdate(p_name, p_content, p_no);
 			if(result == 1) {

@@ -25,6 +25,10 @@
 		url('${pageContext.request.contextPath}/image/logo.svg');
 	background-size: 100px;
 }
+
+.t100_title, t100_name{
+overflow:hidden;
+}
 </style>
 </head>
 
@@ -35,10 +39,9 @@
 			<a href="mainServlet" id="fix_logo_title">Jelly Music</a>
 		</div>
 		<div id="fix_user">
-			<img src="${pageContext.request.contextPath}/image/005-user.svg"
-				id="fix_prof"> <a href="#">Hello, ${mem_id }</a> <input
-				type="hidden" id="mem_id" name="mem_id" value=${mem_id }>
-		</div>
+			<img src="${pageContext.request.contextPath}/image/005-user.svg" id="fix_prof">
+                            <a href="#">Hello, ${mem_id }</a>
+                </div>
 		<div id="fix_side_menu">
 			<div>
 				<input type="radio" name="fix_drp" id="login"> <input

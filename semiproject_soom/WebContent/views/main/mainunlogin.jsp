@@ -135,7 +135,7 @@
 			</label>
                 </div>
                 <div id="title_p">
-                    <a href="#">Register</a>
+                    <a href="<%=request.getContextPath()%>/registerServlet">Register</a>
                 </div>
                 <div class="top100">
                     <h1 id="ct4">Top100</h1>

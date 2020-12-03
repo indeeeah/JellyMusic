@@ -1283,6 +1283,9 @@ td, tr {
 	cursor:pointer;
 	
 }
+tbody > tr > td {
+	color:white;
+}
 </style>
 
 <!-- footer -->

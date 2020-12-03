@@ -65,7 +65,7 @@ public class MyPageModifyCtrlSrv extends HttpServlet {
 			
 			MemberLoginVO vo = (MemberLoginVO)session.getAttribute("ssLogInfo");
 			System.out.println(vo.getMem_id());
-			int rs = dao.updateinfo(vo.getMem_id(),mem_pwd,mem_name,mem_birth,mem_email,mem_phone);
+			int rs = dao.updateinfo(vo.getMem_id(),mem_pwd,mem_name,mem_email,mem_phone);
 			 
 			if(rs>0){
 				

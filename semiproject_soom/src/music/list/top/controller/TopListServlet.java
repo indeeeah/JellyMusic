@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.model.vo.MainVO;
 import music.list.top.model.service.TopListSrv;
 import music.list.top.model.vo.TopListVO;
 
@@ -47,6 +48,8 @@ public class TopListServlet extends HttpServlet {
 		try {
 			TopListSrv tSrv = new TopListSrv();
 			List<TopListVO> Toplist = tSrv.getTopListAll();
+		      List<MainVO> searlist = tSrv.searchWord();
+		         request.setAttribute("searlist", searlist);
 			if(Toplist!= null) {
 				System.out.println("aaaa");
 				request.setAttribute("TopList", Toplist);

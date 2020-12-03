@@ -16,7 +16,7 @@ import music.musicsearch.model.vo.MusicSearchVO;
 public class MusicSearchDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	public List<MusicSearchVO>getMeusicSearchAll(Connection conn, String search) {
+	public List<MusicSearchVO> getMusicSearchAll(Connection conn, String search) {
 		List<MusicSearchVO> list = new ArrayList<MusicSearchVO>();
 		String sql = "select * from (select ROWNUM rnum, mu.* from " + 
 				"    (select m.mu_no, m.mu_name, art.art_no, art.art_name, al.f_no from album al " + 

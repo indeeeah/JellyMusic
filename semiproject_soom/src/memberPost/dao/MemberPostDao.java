@@ -47,7 +47,7 @@ public class MemberPostDao {
 			list = new ArrayList<MemberPostVo>();
 			do {
 				MemberPostVo vo = new MemberPostVo();
-				vo.setP_no(rs.getInt("p_no"));
+				vo.setP_no(rs.getString("p_no"));
 				vo.setP_name(rs.getString("p_name"));
 				vo.setP_content(rs.getString("p_content"));
 				vo.setP_time(rs.getDate("p_time"));
@@ -68,7 +68,7 @@ public class MemberPostDao {
 		pstmt.setInt(1, strp_no);
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
-			vo.setP_no(rs.getInt("p_no"));
+			vo.setP_no(rs.getString("p_no"));
 			vo.setP_name(rs.getString("p_name"));
 			vo.setP_content(rs.getString("p_content"));
 			vo.setP_time(rs.getDate("p_time"));
