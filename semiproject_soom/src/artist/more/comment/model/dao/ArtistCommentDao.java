@@ -34,11 +34,12 @@ public class ArtistCommentDao {
 		return cnt;
 	}
 	
-	public List<ArtistCommentVO> getArtComment(Connection con){
+	public List<ArtistCommentVO> getArtComment(Connection con, String art_no){
 		List<ArtistCommentVO> list = new ArrayList<ArtistCommentVO>();
-		String sql = "select * from artistcomment order by art_date desc"; //댓글이 달리면 해당 ref 같은 글이 최상위로 올라오게 한다.
+		String sql = "select art.*, m.mem_name from artistcomment art join member m on art.mem_id = m.mem_id where art_no=? order by art_date desc"; 
 		try {
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, art_no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {
@@ -54,6 +55,7 @@ public class ArtistCommentDao {
 					vo.setArt_hates(rs.getInt("art_hates"));
 					vo.setArt_report(rs.getInt("art_report"));
 					vo.setArt_date(rs.getDate("art_date"));
+					vo.setMem_name(rs.getString("mem_name"));
 					list.add(vo);
 				} while(rs.next());
 			}

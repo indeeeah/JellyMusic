@@ -1,6 +1,7 @@
 package artist.more.comment.model.vo;
 
 import java.sql.Date;
+//한글
 
 public class ArtistCommentVO {
 	private int art_co_no;
@@ -80,6 +81,15 @@ public class ArtistCommentVO {
 	}
 	public void setArt_date(Date art_date) {
 		this.art_date = art_date;
+	}
+	
+	public String mem_name;
+
+	public String getMem_name() {
+		return mem_name;
+	}
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 	
 }

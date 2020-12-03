@@ -36,6 +36,7 @@ public class AlbumMoreDao {
 					vo.setArt_name(rs.getString("art_name"));
 					vo.setAl_intro(rs.getString("al_intro"));
 					vo.setAl_release(rs.getDate("al_release"));
+					vo.setF_no(rs.getString("f_no"));
 					list.add(vo);
 				}while(rs.next());
 			}
@@ -53,7 +54,7 @@ public class AlbumMoreDao {
 	// 수록곡
 	public List<AlbumMoreVO> getIncludeMu(Connection conn, String al_no){
 		List<AlbumMoreVO> slist = new ArrayList<AlbumMoreVO>();
-		String sql = "select mu_no, mu_name, art.art_no, art_name, mu_ly, al.al_no, al.al_name from music m" + 
+		String sql = "select mu_no, mu_name, art.art_no, art_name, mu_ly, al.al_no, al.al_name, al.f_no from music m" + 
 				"    left outer join album al on m.al_no = al.al_no" + 
 				"    left outer join artist art on m.art_no = art.art_no" + 
 				"    where al.al_no=?";
@@ -72,6 +73,7 @@ public class AlbumMoreDao {
 					vo.setAl_no(rs.getString("al_no"));
 					vo.setAl_name(rs.getString("al_name"));
 					vo.setMu_ly(rs.getString("mu_ly"));
+					vo.setF_no(rs.getString("f_no"));
 					slist.add(vo);
 				}while(rs.next());
 			}
@@ -89,7 +91,7 @@ public class AlbumMoreDao {
 	// 싱글
 	public List<AlbumMoreVO> getSingles(Connection conn, String al_no){
 		List<AlbumMoreVO> list = new ArrayList<AlbumMoreVO>();
-		String sql = "select distinct al_name, al.al_no, art_name, art.art_no from music m" + 
+		String sql = "select distinct al_name, al.al_no, art_name, art.art_no, al.f_no from music m" + 
 				"    left outer join album al on m.al_no = al.al_no" + 
 				"    left outer join artist art on m.art_no = art.art_no" + 
 				"    where art_name=(select distinct art_name from music m" + 
@@ -108,6 +110,7 @@ public class AlbumMoreDao {
 					vo.setAl_no(rs.getString("al_no"));
 					vo.setArt_name(rs.getString("art_name"));
 					vo.setArt_no(rs.getString("art_no"));
+					vo.setF_no(rs.getString("f_no"));
 					list.add(vo);
 				}while(rs.next());
 			}
@@ -163,7 +166,7 @@ public class AlbumMoreDao {
 	// 댓글 	
 	public List<AlbumCommentVO> getCommentAll(Connection con){
 		List<AlbumCommentVO> list = new ArrayList<AlbumCommentVO>();
-		String sql = "select al.*, m.mem_aka from albumcomment al join member m on al.mem_id = m.mem_id  order by al_date desc"; //댓글이 달리면 해당 ref 같은 글이 최상위로 올라오게 한다.
+		String sql = "select al.*, m.mem_name from albumcomment al join member m on al.mem_id = m.mem_id  order by al_date desc"; //댓글이 달리면 해당 ref 같은 글이 최상위로 올라오게 한다.
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -181,7 +184,7 @@ public class AlbumMoreDao {
 					vo.setAl_hates(rs.getInt("al_hates"));
 					vo.setAl_report(rs.getInt("al_report"));
 					vo.setAl_date(rs.getDate("al_date"));
-					vo.setMem_aka(rs.getString("mem_aka"));
+					vo.setMem_name(rs.getString("mem_name"));
 					list.add(vo);
 				} while(rs.next());
 			}

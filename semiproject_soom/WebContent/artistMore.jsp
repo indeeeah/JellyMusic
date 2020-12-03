@@ -834,6 +834,12 @@ ul{
 	font-size: 1em;
 	padding-top: 20px;
 }
+.art_summary span{
+	line-height:20px;
+}
+.introBtn{
+	display:block;
+}
 /* 소개 옵션 */
 .option_area {
 	width: 739px;
@@ -973,6 +979,7 @@ ul{
 }
 
 .art_more_tracks_title {
+	padding-bottom: 10px;
 	display: flex;
 }
 .art_more_tracks_title div {
@@ -1185,6 +1192,7 @@ table tr {
 	height: 150px;
 	border-radius: 50%;
 	border: 1px solid white;
+	margin-bottom: 10px;
 }
 
 .art_more_similar_another {
@@ -1214,7 +1222,9 @@ table input {
 .artist_comments_author {
 	margin-bottom: 10px;
 }
-
+.artist_comments_id{
+	margin-top:10px;
+}
 .artist_comments_nick {
 	margin-left: 10px;
 }
@@ -1254,6 +1264,14 @@ td, tr {
 
 .artist_comments_write .commenthidden {
 	display: hidden;
+}
+.album_comments_delete{
+	padding-left: 1000px;
+}
+
+.album_comments_delete > label{
+	cursor:pointer;
+	
 }
 </style>
 
@@ -1526,12 +1544,13 @@ footer {
 							</div>
 							<div class="art_summary">
 								<span class="items">${v.art_intro }</span>
-								<div style="cursor:pointer" class="introBtn">더보기</div>
 							</div>
+								<div style="cursor:pointer" class="introBtn">더보기</div>
 						</div>
 						<div id="introModal" class="modal">
 							<div class="modal-content ">
-								<a class="introClose">&times;</a>
+								<!-- <a class="introClose">&times;</a> -->
+								<button type="button" class="introClose" value="${v.mu_name }">&times;</button>
 								<pre>${v.art_intro }</pre>
 							</div>
 						</div>
@@ -1549,16 +1568,6 @@ footer {
 							<div class="option_like">
 								<a id="heart" class="far fa-heart"></a>
 							</div>
-							<!-- <div class="option_drop">
-								<a class="drop_more">...</a>
-								<div class="option_drop_menu">
-									<ul>
-										<li><a>내 플레이리스트 추가</a></li>
-										<li><a>좋아요</a></li>
-										<li><a>보관함에 넣기</a></li>
-									</ul>
-								</div>
-							</div> -->
 						</div>
 					</div>
 				</div>
@@ -1582,7 +1591,9 @@ footer {
 								<div class="art_more_tracks_line">
 									<div class="art_more_tracks_line1"><a href="#"><img src="image/bts-dynamite-cover.jpg"></a></div>
 									<div class="art_more_tracks_line2">${s.count }</div>
-									<div class="art_more_tracks_line3"><a onclick="openWin()" class="tracks_play"><div>재생</div></a></div>
+									<div class="art_more_tracks_line3"><!-- <a onclick="openWin()" class="tracks_play"><div>재생</div></a> -->
+									<a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="tracks_play"> 
+                                        재생</a><input type="hidden" class="nrgo" name="mu_no" value=${v.mu_no}></div>
 									<div class="art_more_tracks_line4"><a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no }" class="tracks_name"><div>${v.mu_name}</div></a></div>
 									<div class="art_more_tracks_line5"><a href="<%=request.getContextPath() %>/albumMoreServlet?al_no=${v.al_no }" class="tracks_album"><div>${v.al_name }</div></a></div>
 									<div class="art_more_tracks_line6">
@@ -1615,14 +1626,7 @@ footer {
 					<div class="art_more_singles_text">
 						<div class="art_more_singles_title">Singles</div>
 						<div class="art_more_singles_plus">
-							<div>
-								<select name="sor" id="sort">
-									<option value="1">인기순</option>
-									<option value="2">최신곡</option>
-									<option value="3">이름순</option>
-								</select>
-							</div>
-							<a href=""><div>모아보기</div></a> <a href=""><div>리스트로보기</div></a>
+							<a href=""><div>더보기</div></a>
 						</div>
 					</div>
 					<div class="art_more_singles_seriese">
@@ -1655,7 +1659,7 @@ footer {
 			<div class="art_more_similar">
 				<div class="art_more_similar_text">
 					<div class="art_more_similar_title">Similar Artists</div>
-					<div class="art_more_similar_plus">더보기</div>
+					<div class="art_more_similar_plus"><a>더보기</a></div>
 				</div>
 				<div class="art_more_similar_inner">
 				<c:if test="${not empty similar }">
@@ -1712,7 +1716,7 @@ footer {
 							<div class="artist_comments_box">
 								<div class="artist_comments_author">
 									<div class="artist_comments_id">
-										<a>${v.mem_aka }</a>&nbsp;님&nbsp;<span class="mem_id">(${v.mem_id })</span>
+										<a>${v.mem_name }</a>&nbsp;님&nbsp;<span class="mem_id">(${v.mem_id })</span>
 									</div>
 								</div>
 								<div class="artist_comments_base">
@@ -1736,7 +1740,7 @@ footer {
 										</div>
 										<c:if test ="${mem_id eq v.mem_id }">
 										<div class="album_comments_delete">
-											<input type="button" onclick="window.location='artistCommentDeleteCtrl?art_co_no=${v.art_co_no}&art_no=${v.art_no }'" value="삭제">
+											<label for="delete">삭제</label><input type="hidden" id="delete" onclick="window.location='artistCommentDeleteCtrl?art_co_no=${v.art_co_no}&art_no=${v.art_no }'" value="삭제">
 										</div>
 										</c:if>
 									</div>
@@ -1837,10 +1841,44 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-*/
-function openWin(){  
-    window.open('<%=request.getContextPath() %>/playerCtrl.do', "네이버새창", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
-}  
+*/ 
+$(".tracks_play").click(function() {
+    var showNvalue = $(this).next().val();
+    var showmemId = $("#mem_id").val();
+    console.log(showNvalue);
+    console.log(showmemId);
+
+    $.ajax({
+        type: "POST",
+        url: "mainToPlayListSrv",
+        data: {
+            mem_id: showmemId,
+            mu_no: showNvalue
+        },
+        success: function(resultnl) {
+
+        }
+    });
+});
+
+$(".tracks_play").click(function() {
+   var showNvalue = $(this).next().val();
+   var showmemId = $("#mem_id").val();
+   console.log(showNvalue);
+   console.log(showmemId);
+
+   $.ajax({
+       type: "POST",
+       url: "updateCurrmusicServlet",
+       data: {
+           mem_id: showmemId,
+           mu_no: showNvalue
+       },
+       success: function(resultcm) {
+
+       }
+   });
+});
 </script>
 </body>
 </html>

@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import music.more.comment.model.service.MusicCommentSrv;
 import music.more.comment.model.vo.MusicCommentVO;
-import post.model.service.PostSrv;
-import post.model.vo.PostVO;
 
 /**
  * Servlet implementation class MusicCommentDeleteCtrl

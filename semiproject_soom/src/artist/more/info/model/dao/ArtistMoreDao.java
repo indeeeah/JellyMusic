@@ -19,7 +19,7 @@ public class ArtistMoreDao {
 	// 아티스트 소개
 	public List<ArtistMoreVO> getArtistInfo(Connection conn, String art_no) {
 		List<ArtistMoreVO> list = new ArrayList<ArtistMoreVO>();
-		String sql = "select distinct m.art_no, art_name, art_intro from music m \r\n" + 
+		String sql = "select distinct m.art_no, art_name, art_intro, art.f_no from music m \r\n" + 
 				"    left outer join album al on m.al_no = al.al_no \r\n" + 
 				"    left outer join artist art on m.art_no = art.art_no\r\n" + 
 				"    where art.art_no=?";
@@ -161,7 +161,7 @@ public class ArtistMoreDao {
 	// 아티스트 댓글
 	public List<ArtistCommentVO> getArtComment(Connection con){
 		List<ArtistCommentVO> list = new ArrayList<ArtistCommentVO>();
-		String sql = "select art.*, m.mem_aka from artistcomment art join member m on art.mem_id = m.mem_id  order by art_date desc";
+		String sql = "select art.*, m.mem_name from artistcomment art join member m on art.mem_id = m.mem_id  order by art_date desc";
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -179,7 +179,7 @@ public class ArtistMoreDao {
 					vo.setArt_hates(rs.getInt("art_hates"));
 					vo.setArt_report(rs.getInt("art_report"));
 					vo.setArt_date(rs.getDate("art_date"));
-					vo.setMem_aka(rs.getString("mem_aka"));
+					vo.setMem_name(rs.getString("mem_name"));
 					list.add(vo);
 				} while(rs.next());
 			}

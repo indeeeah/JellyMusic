@@ -933,6 +933,7 @@ hr {
 	.al_more_info {
 		padding: 60px 0 50px 0;
 		word-break: break-all;
+		line-height: 20px;
 	}
 	
 	.al_more_info_img {
@@ -969,6 +970,7 @@ hr {
 		padding-top: 10px;
 		overflow: hidden;
 		height: 40px;
+		line-height:20px;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		display: -webkit-box;
@@ -992,8 +994,8 @@ hr {
 	  padding-top: 100px; /* Location of the box */
 	  left: 0;
 	  top: 0;
-	  width: 100%; /* Full width */
-	  height: 100%; /* Full height */
+	  width: 700px; /* Full width */
+	  height: 700px; /* Full height */
 	  overflow-y: hidden; /* Enable scroll if needed */
 	  background-color: rgb(0,0,0); /* Fallback color */
 	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -1009,21 +1011,25 @@ hr {
 	  border: 1px solid #888;
 	  width: 668px;
 	  height: 549px;
+	  line-height:20px;
 	  border-radius:4px;
 	  margin-top:25px;
 	  padding:50px 35px;
+	}
+	.introClose span{
+		color:grey;
 	}
 	.modal-content pre {
 		color: #000;
 	}
 	/* The Close Button */
-	.close {
+	.introClose {
 	  color: #aaaaaa;
 	  float: right;
 	  font-size: 28px;
 	  font-weight: bold;
 	}
-	.close:hover, .close:focus {
+	.introClose:hover span, .introClose:focus span{
 	  color: #000;
 	  text-decoration: none;
 	  cursor: pointer;
@@ -1156,13 +1162,12 @@ hr {
 		font-size: 1.5em;
 		padding-bottom: 15px;
 	}
-	
-	.al_more_tracks_title div {
-		display: inline;
+	.al_more_tracks_title{
+		padding-bottom:10px;
+		display: flex;
 	}
-	
-	.al_more_tracks_line img {
-		vertical-align: text-top;
+	.al_more_tracks_title div {
+		text-align: center;
 	}
 	
 	.al_more_tracks_line div {
@@ -1171,7 +1176,18 @@ hr {
 		line-height: 40px;
 		text-align: center;
 	}
-	
+	.al_more_tracks_title1{
+		width:18%;
+	}
+	.al_more_tracks_title2{
+		width:30%;
+	}
+	.al_more_tracks_title3{
+		width:25%;
+	}
+	.al_more_tracks_title4{
+		width:30%;
+	}
 	.al_more_tracks_line img {
 		width: 40px;
 		height: 40px;
@@ -1182,32 +1198,30 @@ hr {
 		display: flex;
 	}
 	.al_more_tracks_line1{
-		width:5%;
+		width:7%;
 	}
 	.al_more_tracks_line2{
-		width:5%;
+		width:4%;
 	}
 	.al_more_tracks_line3{
-		width:5%;
+		width:7%;
 	}
 	.al_more_tracks_line4{
-		width:25%;
+		width:30%;
 	}
 	.al_more_tracks_line5{
-		width:20%;
+		width:25%;
 	}
 	.al_more_tracks_line6{
-		width:10%;
+		width:12%;
 	}
 	.al_more_tracks_line7{
-		width:10%;
+		width:7%;
 	}
 	.al_more_tracks_line8{
-		width:10%;
+		width:12%;
 	}
-	.al_more_tracks_line9{
-		width:5%;
-	}
+
 	.al_more_tracks_plus {
 		text-align: center;
 		right: 0px;
@@ -1216,7 +1230,7 @@ hr {
 	.modal {
 	  display:none;
 	  position: fixed; /* Stay in place */
-	  z-index: 100; /* Sit on top */
+	  z-index: 10; /* Sit on top */
 	  padding-top: 100px; /* Location of the box */
 	  left: 0;
 	  top: 0;
@@ -1235,6 +1249,7 @@ hr {
 	  border: 1px solid #888;
 	  width: 80%;
 	  overflow: scroll;
+	  line-height:20px;
 	}
 	
 	/* The Close Button */
@@ -1346,6 +1361,7 @@ hr {
 		width: 150px;
 		height: 150px;
 		border: 1px solid white;
+		margin-bottom: 10px;
 	}
 	
 	.al_more_alike_another {
@@ -1471,6 +1487,7 @@ hr {
 </head>
 
 <body>
+<input type="hidden" id="mem_id" value=${v.mem_id }>
 	<nav id="side">
 		<div id="logo">
 			<img src="#" id="logo_img">
@@ -1702,11 +1719,13 @@ hr {
 				</div>
 				<div class="option_area">
 					<div class="option_inner">
-						<a href="#" class="option_play">
-							<button class="play_btn"></button>전체재생
-						</a> <a href="#" class="option_play">
+						<a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="all_play option_play">
+                                        <button type="button" class="play_btn" name="mu_no" value=${v.mu_no}></button>전체재생</a>
+						<!-- <a href="#" class="option_play">
 							<button class="play_btn"></button>랜덤재생
-						</a>
+						</a> -->
+						<a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="random_play option_play">
+                                        <button type="button" class="play_btn" name="mu_no" value=${v.mu_no}></button>랜덤재생</a>
 						<div class="option_buy">
 							<a href="<%=request.getContextPath() %>/MembershipServlet" class="buy_btn">이용권구매</a>
 						</div>
@@ -1736,11 +1755,10 @@ hr {
 				<div class="al_more_tracks_inner">
 					<div class="al_more_tracks_list">
 						<div class="al_more_tracks_title">
-							<div>#</div>
-							<div>SONG</div>
-							<div>ALBUM</div>
-							<div>TIME</div>
-							<div>OPTION</div>
+							<div class="al_more_tracks_title1">#</div>
+							<div class="al_more_tracks_title2">SONG</div>
+							<div class="al_more_tracks_title3">ALBUM</div>
+							<div class="al_more_tracks_title4">OPTION</div>
 							<div></div>
 						</div>
 						<div>
@@ -1752,17 +1770,17 @@ hr {
 									</div>
 									<div class="al_more_tracks_line2">${s.count }</div>
 									<div class="al_more_tracks_line3">
-										<a href="#" class="tracks_play">
+										<%-- <a href="#" class="tracks_play">
 											<button class="playBtn" value="${v.mu_name }" onclick="openWin()" type="button" >재생</button>
-
-										</a>
+										</a> --%>
+										<a href="<%=request.getContextPath()%>/playerCtrl.do?mu_no=${v.mu_no}" onclick="window.open(this.href,'','width=1200,height=720,scrollbars=no'); return false;" class="tracks_play"> 재생
+                                        </a><input type="hidden" class="nrgo" name="mu_no" value=${v.mu_no}>
 									</div>
 									<div class="al_more_tracks_line4"><a href="<%=request.getContextPath() %>/musicMoreServlet?mu_no=${v.mu_no }" class="tracks_music">${v.mu_name}</a></div>
 									<div class="al_more_tracks_line5"><a href="<%=request.getContextPath() %>/artistMoreServlet?art_no=${v.art_no }" class="tracks_name">${v.art_name }</a></div>
-									<div class="al_more_tracks_line6"></div>
-									<div class="al_more_tracks_line7"><button type="button" class="tracks_lyrics myBtn" value="${v.mu_name }">가사보기</button></div>
-									<div class="al_more_tracks_line8"><a href="<%=request.getContextPath() %>/MembershipServlet" class="tracks_buy">이용권구매</a></div>
-									<div class="al_more_tracks_line9"><a href="#" class="tracks_more">더보기</a></div>
+									<div class="al_more_tracks_line6"><button type="button" class="tracks_lyrics myBtn" value="${v.mu_name }">가사보기</button></div>
+									<div class="al_more_tracks_line7"><a href="<%=request.getContextPath() %>/MembershipServlet" class="tracks_buy">이용권구매</a></div>
+									<div class="al_more_tracks_line8"><a href="#" class="tracks_more">더보기</a></div>
 								</div>
 								<div id="${v.mu_name }" class="modal">
 									<div class="modal-content ">
@@ -1879,7 +1897,7 @@ hr {
 							<div class="album_comments_box">
 								<div class="album_comments_author">
 									<div class="album_comments_id">
-										<a>${v.mem_aka }</a>&nbsp;님&nbsp;<span class="mem_id">(${v.mem_id })</span>
+										<a>${v.mem_name }</a>&nbsp;님&nbsp;<span class="mem_id">(${v.mem_id })</span>
 									</div>
 								</div>
 								<div class="album_comments_base">
@@ -1997,6 +2015,118 @@ $('.introBtn').on('click', function() {
 });
 $('.introClose').on('click', function() {
 	$('#introModal').hide();
+});
+
+$(".tracks_play").click(function() {
+    var showNvalue = $(this).next().val();
+    var showmemId = $("#mem_id").val();
+    console.log(showNvalue);
+    console.log(showmemId);
+
+    $.ajax({
+        type: "POST",
+        url: "mainToPlayListSrv",
+        data: {
+            mem_id: showmemId,
+            mu_no: showNvalue
+        },
+        success: function(resultnl) {
+
+        }
+    });
+});
+
+$(".tracks_play").click(function() {
+   var showNvalue = $(this).next().val();
+   var showmemId = $("#mem_id").val();
+   console.log(showNvalue);
+   console.log(showmemId);
+
+   $.ajax({
+       type: "POST",
+       url: "updateCurrmusicServlet",
+       data: {
+           mem_id: showmemId,
+           mu_no: showNvalue
+       },
+       success: function(resultcm) {
+
+       }
+   });
+});
+$(".all_play").click(function() {
+    var showNvalue = $(this).next().val();
+    var showmemId = $("#mem_id").val();
+    console.log(showNvalue);
+    console.log(showmemId);
+
+    $.ajax({
+        type: "POST",
+        url: "mainToPlayListSrv",
+        data: {
+            mem_id: showmemId,
+            mu_no: showNvalue
+        },
+        success: function(resultnl) {
+
+        }
+    });
+});
+
+$(".all_play").click(function() {
+   var showNvalue = $(this).next().val();
+   var showmemId = $("#mem_id").val();
+   console.log(showNvalue);
+   console.log(showmemId);
+
+   $.ajax({
+       type: "POST",
+       url: "updateCurrmusicServlet",
+       data: {
+           mem_id: showmemId,
+           mu_no: showNvalue
+       },
+       success: function(resultcm) {
+
+       }
+   });
+});
+$(".random_play").click(function() {
+    var showNvalue = $(this).next().val();
+    var showmemId = $("#mem_id").val();
+    console.log(showNvalue);
+    console.log(showmemId);
+
+    $.ajax({
+        type: "POST",
+        url: "mainToPlayListSrv",
+        data: {
+            mem_id: showmemId,
+            mu_no: showNvalue
+        },
+        success: function(resultnl) {
+
+        }
+    });
+});
+
+$(".random_play").click(function() {
+   var showNvalue = $(this).next().val();
+   var showmemId = $("#mem_id").val();
+   console.log(showNvalue);
+   console.log(showmemId);
+
+   $.ajax({
+       type: "POST",
+       url: "updateCurrmusicServlet",
+       data: {
+           mem_id: showmemId,
+           mu_no: showNvalue
+       },
+       success: function(resultcm) {
+
+       }
+   });
 });
 </script>
 

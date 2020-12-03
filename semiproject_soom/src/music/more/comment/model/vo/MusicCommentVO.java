@@ -84,13 +84,13 @@ public class MusicCommentVO {
 	}
 
 	//닉네임
-	private String mem_aka;
+	private String mem_name;
 
-	public String getMem_aka() {
-		return mem_aka;
+	public String getMem_name() {
+		return mem_name;
 	}
-	public void setMem_aka(String mem_aka) {
-		this.mem_aka = mem_aka;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 	
 }

@@ -37,7 +37,7 @@ public class MusicCommentDao {
 	
 	public List<MusicCommentVO> getCommentAll(Connection con, String mu_no){
 		List<MusicCommentVO> list = new ArrayList<MusicCommentVO>();
-		String sql = "select mc.*, m.mem_aka from musiccomment mc join member m on mc.mem_id = m.mem_id  where mc.mu_no=? order by mu_date desc"; //댓글이 달리면 해당 ref 같은 글이 최상위로 올라오게 한다.
+		String sql = "select mc.*, m.mem_name from musiccomment mc join member m on mc.mem_id = m.mem_id  where mc.mu_no=? order by mu_date desc"; //댓글이 달리면 해당 ref 같은 글이 최상위로 올라오게 한다.
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setNString(1, mu_no);
@@ -56,7 +56,7 @@ public class MusicCommentDao {
 					vo.setMu_hates(rs.getInt("mu_hates"));
 					vo.setMu_report(rs.getInt("mu_report"));
 					vo.setMu_date(rs.getDate("mu_date"));
-					vo.setMem_aka(rs.getString("mem_aka"));
+					vo.setMem_name(rs.getString("mem_name"));
 					list.add(vo);
 				} while(rs.next());
 			}

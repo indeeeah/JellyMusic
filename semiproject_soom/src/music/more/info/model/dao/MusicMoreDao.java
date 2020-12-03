@@ -178,6 +178,7 @@ public class MusicMoreDao {
 					vo.setMu_mood(rs.getInt("mu_mood"));
 					vo.setMu_every_play(rs.getInt("mu_every_play"));
 					vo.setAl_name(rs.getString("al_name"));
+					vo.setF_no(rs.getString("f_no"));
 					list.add(vo);
 				}while(rs.next());
 			}
