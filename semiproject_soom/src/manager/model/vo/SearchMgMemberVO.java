@@ -64,9 +64,9 @@ public class SearchMgMemberVO {
 	
 	public String getmem_sexual() {
 		if(mem_gender==1) {
-			return "³²";
+			return "ë‚¨";
 		} else {
-			return "¿©";
+			return "ì—¬";
 		}
 	}
 }
