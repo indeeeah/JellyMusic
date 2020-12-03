@@ -30,7 +30,6 @@
 				<td>아이디</td>
 				<td>비밀번호</td>
 				<td>이름</td>
-				<td>닉네임</td>
 				<td>주소</td>
 				<td>이메일</td>
 				<td>전화번호</td>
@@ -47,7 +46,6 @@
 				<td>${mvo.mem_id}</td>  
 				<td>${mvo.mem_pwd}</td>  
 				<td>${mvo.mem_name}</td>  
-				<td>${mvo.mem_aka}</td>  
 				<td>${mvo.mem_addr}</td>  
 				<td>${mvo.mem_email}</td>  
 				<td>${mvo.mem_phone}</td>  
