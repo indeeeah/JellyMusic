@@ -50,7 +50,7 @@ public class MemberLoginDao {
 
 	public int MemberRegisterSrv(MemberLoginVO mvo) {
 		int result = 0;
-		String sql = "insert into member(mem_id, mem_pwd, mem_name, mem_email, mem_birth, mem_phone, mem_gender) values(?,?,?,?,?,?,?)";
+		String sql = "insert into member(mem_id, mem_pwd, mem_name, mem_email, mem_phone, mem_gender) values(?,?,?,?,?,?)";
 		
 		try {
 			conn = ds.getConnection();
@@ -60,9 +60,8 @@ public class MemberLoginDao {
 			pstmt.setString(2, mvo.getMem_pwd());
 			pstmt.setString(3, mvo.getMem_name());
 			pstmt.setString(4, mvo.getMem_email());
-			pstmt.setString(5, mvo.getMem_birth());
-			pstmt.setString(6, mvo.getMem_phone());
-			pstmt.setInt(7, mvo.getMem_gender());
+			pstmt.setString(5, mvo.getMem_phone());
+			pstmt.setInt(6, mvo.getMem_gender());
 			
 			result = pstmt.executeUpdate();			
 		} catch (SQLException e) {
@@ -91,7 +90,6 @@ public class MemberLoginDao {
 				mem.setMem_pwd(result.getString("mem_pwd"));
 				mem.setMem_name(result.getString("mem_name"));
 				mem.setMem_email(result.getString("mem_email"));
-				mem.setMem_birth(result.getString("mem_birth"));
 				mem.setMem_phone(result.getString("mem_phone"));
 				mem.setMem_gender(result.getInt("mem_gender"));
 			}
@@ -121,7 +119,6 @@ public class MemberLoginDao {
 					mvo.setMem_pwd(rs.getString("mem_pwd"));
 					mvo.setMem_name(rs.getString("mem_name"));
 					mvo.setMem_email(rs.getString("mem_email"));
-					mvo.setMem_birth(rs.getString("mem_birth"));
 					mvo.setMem_phone(rs.getString("mem_phone"));
 					mvo.setMem_gender(rs.getInt("mem_gender"));
 					mVoList.add(mvo);

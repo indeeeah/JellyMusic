@@ -30,6 +30,7 @@
         </head>
 
         <body>
+        <input type="hidden" name="mem_id" value=${mem_id }>
             <form method="post" action="<%=request.getContextPath()%>/firstArtistInsertServlet.do">
                 <header class="fix_header">
                     <a href="#" id="img_con"> <img src="image/jelly-beans.svg" id="img"></img>

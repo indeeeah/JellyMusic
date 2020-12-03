@@ -33,7 +33,7 @@
 </head>
 
 <body>
-
+        <input type="hidden" name="mem_id" value=${mem_id }>
 	<form method="post"
 		action="<%=request.getContextPath()%>/firstGenreInsertServlet.do">
 		<header class="fix_header">
